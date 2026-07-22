@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "ssl": {
+      "SSL00": {
+        "days_remaining": "s46",
+        "issuer": "s47",
+        "timestamp": "s48",
+        "url": "s49",
+        "valid": true,
+        "valid_from": "s4b",
+        "valid_to": "s4c",
+        "id": "SSL00"
+      },
+      "SSL01": {
+        "days_remaining": "s8c",
+        "issuer": "s8d",
+        "timestamp": "s8e",
+        "url": "s8f",
+        "valid": true,
+        "valid_from": "s91",
+        "valid_to": "s92",
+        "id": "SSL01"
+      },
+      "SSL02": {
+        "days_remaining": "sd2",
+        "issuer": "sd3",
+        "timestamp": "sd4",
+        "url": "sd5",
+        "valid": true,
+        "valid_from": "sd7",
+        "valid_to": "sd8",
+        "id": "SSL02"
+      }
+    }
+  },
+  "new": {
+    "ssl": {
+      "ssl_ref01": {
+        "days_remaining": "s118",
+        "issuer": "s119",
+        "timestamp": "s11a",
+        "url": "s11b",
+        "valid": true,
+        "valid_from": "s11d",
+        "valid_to": "s11e"
+      }
+    }
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Website Analysis APIs",
+    "description": "This suite of six free REST APIs provides tools for analyzing websites, including dead link checking, SEO audits, screenshot capturing, performance measurement, tech stack detection, and SSL certificate verification. Each API returns JSON responses without requiring an API key for basic usage.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://51-68-119-197.sslip.io/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://51-68-119-197.sslip.io",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/seo": {
+      "get": {
+        "summary": "Check website for broken links",
+        "description": "Analyzes a website to detect dead or broken links. This is part of the SEO audit functionality.",
+        "operationId": "checkBrokenLinks",
+        "tags": [
+          "SEO Analysis"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to check for broken links",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with broken links analysis",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The analyzed URL"
+                    },
+                    "brokenLinks": {
+                      "type": "array",
+                      "description": "List of broken links found on the website",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "link": {
+                            "type": "string",
+                            "description": "The broken link URL"
+                          },
+                          "statusCode": {
+                            "type": "integer",
+                            "description": "HTTP status code returned"
+                          },
+                          "foundOn": {
+                            "type": "string",
+                            "description": "Page where the broken link was found"
+                          }
+                        }
+                      }
+                    },
+                    "totalLinks": {
+                      "type": "integer",
+                      "description": "Total number of links checked"
+                    },
+                    "brokenCount": {
+                      "type": "integer",
+                      "description": "Number of broken links found"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the analysis"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/screenshot": {
+      "get": {
+        "summary": "Capture website screenshot",
+        "description": "Captures a screenshot of the specified website URL",
+        "operationId": "captureScreenshot",
+        "tags": [
+          "Screenshot"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to capture",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with screenshot data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The captured URL"
+                    },
+                    "screenshotUrl": {
+                      "type": "string",
+                      "description": "URL to the captured screenshot"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the capture"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/performance": {
+      "get": {
+        "summary": "Measure website performance",
+        "description": "Analyzes and measures the performance metrics of a website",
+        "operationId": "measurePerformance",
+        "tags": [
+          "Performance"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to analyze",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with performance metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The analyzed URL"
+                    },
+                    "loadTime": {
+                      "type": "number",
+                      "description": "Page load time in milliseconds"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "description": "Total page size in bytes"
+                    },
+                    "requests": {
+                      "type": "integer",
+                      "description": "Number of HTTP requests"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the analysis"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/techstack": {
+      "get": {
+        "summary": "Detect website tech stack",
+        "description": "Detects and identifies the technologies and frameworks used by a website",
+        "operationId": "detectTechStack",
+        "tags": [
+          "Tech Stack"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to analyze",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with detected technologies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The analyzed URL"
+                    },
+                    "technologies": {
+                      "type": "array",
+                      "description": "List of detected technologies",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "description": "Technology name"
+                          },
+                          "category": {
+                            "type": "string",
+                            "description": "Technology category"
+                          },
+                          "version": {
+                            "type": "string",
+                            "description": "Detected version"
+                          }
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the analysis"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/ssl": {
+      "get": {
+        "summary": "Verify SSL certificate",
+        "description": "Verifies the SSL certificate of a website and provides certificate details",
+        "operationId": "verifySSL",
+        "tags": [
+          "SSL Certificate"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to check SSL certificate",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with SSL certificate information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The analyzed URL"
+                    },
+                    "valid": {
+                      "type": "boolean",
+                      "description": "Whether the SSL certificate is valid"
+                    },
+                    "issuer": {
+                      "type": "string",
+                      "description": "Certificate issuer"
+                    },
+                    "validFrom": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Certificate valid from date"
+                    },
+                    "validTo": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Certificate expiry date"
+                    },
+                    "daysRemaining": {
+                      "type": "integer",
+                      "description": "Days remaining until expiry"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the check"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/seo-audit": {
+      "get": {
+        "summary": "Perform SEO audit",
+        "description": "Conducts a comprehensive SEO audit of a website including meta tags, headings, and SEO best practices",
+        "operationId": "seoAudit",
+        "tags": [
+          "SEO Analysis"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the website to audit",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://example.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with SEO audit results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "description": "The audited URL"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Page title"
+                    },
+                    "metaDescription": {
+                      "type": "string",
+                      "description": "Meta description"
+                    },
+                    "headings": {
+                      "type": "object",
+                      "description": "Heading tags analysis",
+                      "properties": {
+                        "h1": {
+                          "type": "integer",
+                          "description": "Number of H1 tags"
+                        },
+                        "h2": {
+                          "type": "integer",
+                          "description": "Number of H2 tags"
+                        }
+                      }
+                    },
+                    "images": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "description": "Total number of images"
+                        },
+                        "missingAlt": {
+                          "type": "integer",
+                          "description": "Images missing alt text"
+                        }
+                      }
+                    },
+                    "score": {
+                      "type": "number",
+                      "description": "Overall SEO score"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the audit"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "SEO Analysis",
+      "description": "SEO audit and broken link checking endpoints"
+    },
+    {
+      "name": "Screenshot",
+      "description": "Website screenshot capturing"
+    },
+    {
+      "name": "Performance",
+      "description": "Website performance measurement"
+    },
+    {
+      "name": "Tech Stack",
+      "description": "Technology stack detection"
+    },
+    {
+      "name": "SSL Certificate",
+      "description": "SSL certificate verification"
+    }
+  ]
+}

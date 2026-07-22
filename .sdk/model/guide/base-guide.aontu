@@ -1,0 +1,44 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 6
+  metrics: count: method: 6
+
+  entity: performance: {
+    path: "/api/performance": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: screenshot: {
+    path: "/api/screenshot": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: seo: {
+    path: "/api/seo": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: seo_analysi: {
+    path: "/api/seo-audit": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: ssl: {
+    path: "/api/ssl": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: tech_stack: {
+    path: "/api/techstack": {
+      op: list: method: *GET
+    }
+  }
+
+}

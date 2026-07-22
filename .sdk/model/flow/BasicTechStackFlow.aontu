@@ -1,0 +1,22 @@
+# BasicTechStackFlow
+
+main: kit: flow: BasicTechStackFlow:
+{
+  entity: "tech_stack",
+  kind: "basic",
+  name: "BasicTechStackFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "tech_stack_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTechStackFlow"
+}

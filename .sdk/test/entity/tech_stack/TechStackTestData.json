@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "tech_stack": {
+      "TECH_STACK00": {
+        "category": "s1e",
+        "name": "s1f",
+        "version": "s20"
+      },
+      "TECH_STACK01": {
+        "category": "s3c",
+        "name": "s3d",
+        "version": "s3e"
+      },
+      "TECH_STACK02": {
+        "category": "s5a",
+        "name": "s5b",
+        "version": "s5c"
+      }
+    }
+  },
+  "new": {
+    "tech_stack": {
+      "tech_stack_ref01": {
+        "category": "s78",
+        "name": "s79",
+        "version": "s7a"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://51-68-119-197.sslip.io/api"
+      }
+      description: "This suite of six free REST APIs provides tools for analyzing websites, including dead link checking, SEO audits, screenshot capturing, performance measurement, tech stack detection, and SSL certificate verification. Each API returns JSON responses without requiring an API key for basic usage."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://51-68-119-197.sslip.io"
+        }
+      ]
+      summary: "This suite of six free REST APIs provides tools for analyzing websites, including dead link checking, SEO audits, screenshot capturing, performance measurement, tech stack detection, and SSL certificate verification."
+      title: "Website Analysis APIs"
+      version: "1.0.0"
+      website: "https://51-68-119-197.sslip.io"
+    }
+  }
+}
+

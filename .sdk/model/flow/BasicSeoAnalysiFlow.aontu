@@ -1,0 +1,28 @@
+# BasicSeoAnalysiFlow
+
+main: kit: flow: BasicSeoAnalysiFlow:
+{
+  entity: "seo_analysi",
+  kind: "basic",
+  name: "BasicSeoAnalysiFlow",
+  step: [
+    {
+      input: {
+        ref: "seo_analysi_ref01",
+        srcdatavar: "seo_analysi_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-seo_analysi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSeoAnalysiFlow"
+}
