@@ -16,11 +16,11 @@
 import pytest
 
 from websiteanalysisapis_sdk import WebsiteAnalysisApisSDK
-from core.error import WebsiteAnalysisApisError
-from core.result import WebsiteAnalysisApisResult
-from core.response import WebsiteAnalysisApisResponse
-from core.spec import WebsiteAnalysisApisSpec
-from feature.base_feature import WebsiteAnalysisApisBaseFeature
+from websiteanalysisapis_sdk.core.error import WebsiteAnalysisApisError
+from websiteanalysisapis_sdk.core.result import WebsiteAnalysisApisResult
+from websiteanalysisapis_sdk.core.response import WebsiteAnalysisApisResponse
+from websiteanalysisapis_sdk.core.spec import WebsiteAnalysisApisSpec
+from websiteanalysisapis_sdk.feature.base_feature import WebsiteAnalysisApisBaseFeature
 
 
 def _client():

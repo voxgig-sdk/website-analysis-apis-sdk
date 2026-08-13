@@ -7,74 +7,74 @@
 -- edit by hand.
 
 ---@class Performance
----@field load_time? number
----@field page_size? number
----@field request? number
+---@field loadTime? number
+---@field pageSize? number
+---@field requests? number
 ---@field timestamp? string
 ---@field url? string
 
 ---@class PerformanceLoadMatch
----@field load_time? number
----@field page_size? number
----@field request? number
+---@field loadTime? number
+---@field pageSize? number
+---@field requests? number
 ---@field timestamp? string
 ---@field url? string
 
 ---@class Screenshot
----@field screenshot_url? string
+---@field screenshotUrl? string
 ---@field timestamp? string
 ---@field url? string
 
 ---@class ScreenshotLoadMatch
----@field screenshot_url? string
+---@field screenshotUrl? string
 ---@field timestamp? string
 ---@field url? string
 
 ---@class Seo
----@field found_on? string
+---@field foundOn? string
 ---@field link? string
----@field status_code? number
+---@field statusCode? number
 
 ---@class SeoListMatch
----@field found_on? string
+---@field foundOn? string
 ---@field link? string
----@field status_code? number
+---@field statusCode? number
 
 ---@class SeoAnalysi
----@field heading? table
----@field image? table
----@field meta_description? string
+---@field headings? table
+---@field images? table
+---@field metaDescription? string
 ---@field score? number
 ---@field timestamp? string
 ---@field title? string
 ---@field url? string
 
 ---@class SeoAnalysiLoadMatch
----@field heading? table
----@field image? table
----@field meta_description? string
+---@field headings? table
+---@field images? table
+---@field metaDescription? string
 ---@field score? number
 ---@field timestamp? string
 ---@field title? string
 ---@field url? string
 
 ---@class Ssl
----@field days_remaining? number
+---@field daysRemaining? number
 ---@field issuer? string
 ---@field timestamp? string
 ---@field url? string
 ---@field valid? boolean
----@field valid_from? string
----@field valid_to? string
+---@field validFrom? string
+---@field validTo? string
 
 ---@class SslLoadMatch
----@field days_remaining? number
+---@field daysRemaining? number
 ---@field issuer? string
 ---@field timestamp? string
 ---@field url? string
 ---@field valid? boolean
----@field valid_from? string
----@field valid_to? string
+---@field validFrom? string
+---@field validTo? string
 
 ---@class TechStack
 ---@field category? string

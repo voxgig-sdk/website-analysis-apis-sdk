@@ -2,28 +2,28 @@
   "existing": {
     "seo": {
       "SEO00": {
-        "found_on": "s1e",
+        "foundOn": "s1e",
         "link": "s1f",
-        "status_code": "s20"
+        "statusCode": "s20"
       },
       "SEO01": {
-        "found_on": "s3c",
+        "foundOn": "s3c",
         "link": "s3d",
-        "status_code": "s3e"
+        "statusCode": "s3e"
       },
       "SEO02": {
-        "found_on": "s5a",
+        "foundOn": "s5a",
         "link": "s5b",
-        "status_code": "s5c"
+        "statusCode": "s5c"
       }
     }
   },
   "new": {
     "seo": {
       "seo_ref01": {
-        "found_on": "s78",
+        "foundOn": "s78",
         "link": "s79",
-        "status_code": "s7a"
+        "statusCode": "s7a"
       }
     }
   }

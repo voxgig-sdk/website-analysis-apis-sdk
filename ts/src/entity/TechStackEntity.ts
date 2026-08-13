@@ -37,7 +37,7 @@ class TechStackEntity extends WebsiteAnalysisApisEntityBase<TechStack> {
 
 
 
-  async list(this: any, reqmatch?: TechStackListMatch, ctrl?: Control): Promise<TechStack[]> {
+  async list(this: any, reqmatch?: TechStackListMatch, ctrl?: Control): Promise<TechStackEntity[]> {
 
     const utility = this._utility
 

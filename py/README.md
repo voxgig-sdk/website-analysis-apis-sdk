@@ -38,7 +38,7 @@ client = WebsiteAnalysisApisSDK()
 
 ### 3. Load a performance
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,8 +55,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    performance = client.Performance().load()
-    print(performance)
+    screenshot = client.Screenshot().load()
+    print(screenshot)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WebsiteAnalysisApisSDK.test()
 
-# Entity ops return the bare record and raise on error.
-performance = client.Performance().load()
-# performance contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+screenshot = client.Screenshot().load()
+# screenshot contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -246,9 +247,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `requests` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -260,7 +261,7 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot_url` |  |
+| `screenshotUrl` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -272,9 +273,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `found_on` |  |
+| `foundOn` |  |
 | `link` |  |
-| `status_code` |  |
+| `statusCode` |  |
 
 Operations: List.
 
@@ -284,9 +285,9 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `heading` |  |
-| `image` |  |
-| `meta_description` |  |
+| `headings` |  |
+| `images` |  |
+| `metaDescription` |  |
 | `score` |  |
 | `timestamp` |  |
 | `title` |  |
@@ -300,13 +301,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `timestamp` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -343,9 +344,9 @@ Create an instance: `performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float` |  |
-| `page_size` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float` |  |
+| `pageSize` | `int` |  |
+| `requests` | `int` |  |
 | `timestamp` | `str` |  |
 | `url` | `str` |  |
 
@@ -370,7 +371,7 @@ Create an instance: `screenshot = client.Screenshot()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot_url` | `str` |  |
+| `screenshotUrl` | `str` |  |
 | `timestamp` | `str` |  |
 | `url` | `str` |  |
 
@@ -395,9 +396,9 @@ Create an instance: `seo = client.Seo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `found_on` | `str` |  |
+| `foundOn` | `str` |  |
 | `link` | `str` |  |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 
 #### Example: List
 
@@ -420,9 +421,9 @@ Create an instance: `seo_analysi = client.SeoAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `heading` | `dict` |  |
-| `image` | `dict` |  |
-| `meta_description` | `str` |  |
+| `headings` | `dict` |  |
+| `images` | `dict` |  |
+| `metaDescription` | `str` |  |
 | `score` | `float` |  |
 | `timestamp` | `str` |  |
 | `title` | `str` |  |
@@ -449,13 +450,13 @@ Create an instance: `ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `str` |  |
 | `timestamp` | `str` |  |
 | `url` | `str` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `str` |  |
-| `valid_to` | `str` |  |
+| `validFrom` | `str` |  |
+| `validTo` | `str` |  |
 
 #### Example: Load
 
@@ -564,11 +565,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-performance = client.Performance()
-performance.load()
+screenshot = client.Screenshot()
+screenshot.load()
 
-# performance.data_get() now returns the performance data from the last load
-# performance.match_get() returns the last match criteria
+# screenshot.data_get() now returns the screenshot data from the last load
+# screenshot.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

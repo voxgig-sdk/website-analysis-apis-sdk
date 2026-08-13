@@ -6,7 +6,7 @@ main: kit: entity: screenshot: {
 
   fields: [
     {
-      name: "screenshot_url"
+      name: "screenshotUrl"
       req: false
       type: "`$STRING`"
     }

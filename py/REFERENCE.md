@@ -107,9 +107,9 @@ performance = client.Performance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `float` | No |  |
-| `page_size` | `int` | No |  |
-| `request` | `int` | No |  |
+| `loadTime` | `float` | No |  |
+| `pageSize` | `int` | No |  |
+| `requests` | `int` | No |  |
 | `timestamp` | `str` | No |  |
 | `url` | `str` | No |  |
 
@@ -162,7 +162,7 @@ screenshot = client.Screenshot()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `str` | No |  |
+| `screenshotUrl` | `str` | No |  |
 | `timestamp` | `str` | No |  |
 | `url` | `str` | No |  |
 
@@ -215,9 +215,9 @@ seo = client.Seo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `str` | No |  |
+| `foundOn` | `str` | No |  |
 | `link` | `str` | No |  |
-| `status_code` | `int` | No |  |
+| `statusCode` | `int` | No |  |
 
 ### Operations
 
@@ -270,9 +270,9 @@ seo_analysi = client.SeoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `dict` | No |  |
-| `image` | `dict` | No |  |
-| `meta_description` | `str` | No |  |
+| `headings` | `dict` | No |  |
+| `images` | `dict` | No |  |
+| `metaDescription` | `str` | No |  |
 | `score` | `float` | No |  |
 | `timestamp` | `str` | No |  |
 | `title` | `str` | No |  |
@@ -327,13 +327,13 @@ ssl = client.Ssl()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `int` | No |  |
+| `daysRemaining` | `int` | No |  |
 | `issuer` | `str` | No |  |
 | `timestamp` | `str` | No |  |
 | `url` | `str` | No |  |
 | `valid` | `bool` | No |  |
-| `valid_from` | `str` | No |  |
-| `valid_to` | `str` | No |  |
+| `validFrom` | `str` | No |  |
+| `validTo` | `str` | No |  |
 
 ### Operations
 

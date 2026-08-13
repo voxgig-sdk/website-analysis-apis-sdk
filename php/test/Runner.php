@@ -43,8 +43,8 @@ class WebsiteAnalysisApisTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('WEBSITEANALYSISAPIS_TEST_LIVE');
-        $override = self::getenv('WEBSITEANALYSISAPIS_TEST_OVERRIDE');
+        $live = self::getenv('WEBSITE_ANALYSIS_APIS_TEST_LIVE');
+        $override = self::getenv('WEBSITE_ANALYSIS_APIS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class WebsiteAnalysisApisTestRunner
             }
         }
 
-        $explain = self::getenv('WEBSITEANALYSISAPIS_TEST_EXPLAIN');
+        $explain = self::getenv('WEBSITE_ANALYSIS_APIS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['WEBSITEANALYSISAPIS_TEST_EXPLAIN'] = $explain;
+            $m['WEBSITE_ANALYSIS_APIS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

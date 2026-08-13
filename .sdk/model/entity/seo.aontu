@@ -6,7 +6,7 @@ main: kit: entity: seo: {
 
   fields: [
     {
-      name: "found_on"
+      name: "foundOn"
       req: false
       type: "`$STRING`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: seo: {
       type: "`$STRING`"
     }
     {
-      name: "status_code"
+      name: "statusCode"
       req: false
       type: "`$INTEGER`"
     }
@@ -53,7 +53,7 @@ main: kit: entity: seo: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.brokenLinks`"
           }
         }
       ]

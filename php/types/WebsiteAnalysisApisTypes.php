@@ -15,9 +15,9 @@ declare(strict_types=1);
 /** Performance entity data model. */
 class Performance
 {
-    public ?float $load_time = null;
-    public ?int $page_size = null;
-    public ?int $request = null;
+    public ?float $loadTime = null;
+    public ?int $pageSize = null;
+    public ?int $requests = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -25,9 +25,9 @@ class Performance
 /** Request payload for Performance#load. */
 class PerformanceLoadMatch
 {
-    public ?float $load_time = null;
-    public ?int $page_size = null;
-    public ?int $request = null;
+    public ?float $loadTime = null;
+    public ?int $pageSize = null;
+    public ?int $requests = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -35,7 +35,7 @@ class PerformanceLoadMatch
 /** Screenshot entity data model. */
 class Screenshot
 {
-    public ?string $screenshot_url = null;
+    public ?string $screenshotUrl = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -43,7 +43,7 @@ class Screenshot
 /** Request payload for Screenshot#load. */
 class ScreenshotLoadMatch
 {
-    public ?string $screenshot_url = null;
+    public ?string $screenshotUrl = null;
     public ?string $timestamp = null;
     public ?string $url = null;
 }
@@ -51,25 +51,25 @@ class ScreenshotLoadMatch
 /** Seo entity data model. */
 class Seo
 {
-    public ?string $found_on = null;
+    public ?string $foundOn = null;
     public ?string $link = null;
-    public ?int $status_code = null;
+    public ?int $statusCode = null;
 }
 
 /** Request payload for Seo#list. */
 class SeoListMatch
 {
-    public ?string $found_on = null;
+    public ?string $foundOn = null;
     public ?string $link = null;
-    public ?int $status_code = null;
+    public ?int $statusCode = null;
 }
 
 /** SeoAnalysi entity data model. */
 class SeoAnalysi
 {
-    public ?array $heading = null;
-    public ?array $image = null;
-    public ?string $meta_description = null;
+    public ?array $headings = null;
+    public ?array $images = null;
+    public ?string $metaDescription = null;
     public ?float $score = null;
     public ?string $timestamp = null;
     public ?string $title = null;
@@ -79,9 +79,9 @@ class SeoAnalysi
 /** Request payload for SeoAnalysi#load. */
 class SeoAnalysiLoadMatch
 {
-    public ?array $heading = null;
-    public ?array $image = null;
-    public ?string $meta_description = null;
+    public ?array $headings = null;
+    public ?array $images = null;
+    public ?string $metaDescription = null;
     public ?float $score = null;
     public ?string $timestamp = null;
     public ?string $title = null;
@@ -91,25 +91,25 @@ class SeoAnalysiLoadMatch
 /** Ssl entity data model. */
 class Ssl
 {
-    public ?int $days_remaining = null;
+    public ?int $daysRemaining = null;
     public ?string $issuer = null;
     public ?string $timestamp = null;
     public ?string $url = null;
     public ?bool $valid = null;
-    public ?string $valid_from = null;
-    public ?string $valid_to = null;
+    public ?string $validFrom = null;
+    public ?string $validTo = null;
 }
 
 /** Request payload for Ssl#load. */
 class SslLoadMatch
 {
-    public ?int $days_remaining = null;
+    public ?int $daysRemaining = null;
     public ?string $issuer = null;
     public ?string $timestamp = null;
     public ?string $url = null;
     public ?bool $valid = null;
-    public ?string $valid_from = null;
-    public ?string $valid_to = null;
+    public ?string $validFrom = null;
+    public ?string $validTo = null;
 }
 
 /** TechStack entity data model. */

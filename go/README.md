@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-performance, err := client.Performance(nil).Load(nil, nil)
+screenshot, err := client.Screenshot(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = performance
+_ = screenshot
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-performance, err := client.Performance(nil).Load(
+screenshot, err := client.Screenshot(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(performance) // the returned mock data
+fmt.Println(screenshot) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -265,9 +265,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"load_time"` |  |
-| `"page_size"` |  |
-| `"request"` |  |
+| `"loadTime"` |  |
+| `"pageSize"` |  |
+| `"requests"` |  |
 | `"timestamp"` |  |
 | `"url"` |  |
 
@@ -279,7 +279,7 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `"screenshot_url"` |  |
+| `"screenshotUrl"` |  |
 | `"timestamp"` |  |
 | `"url"` |  |
 
@@ -291,9 +291,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `"found_on"` |  |
+| `"foundOn"` |  |
 | `"link"` |  |
-| `"status_code"` |  |
+| `"statusCode"` |  |
 
 Operations: List.
 
@@ -303,9 +303,9 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `"heading"` |  |
-| `"image"` |  |
-| `"meta_description"` |  |
+| `"headings"` |  |
+| `"images"` |  |
+| `"metaDescription"` |  |
 | `"score"` |  |
 | `"timestamp"` |  |
 | `"title"` |  |
@@ -319,13 +319,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `"days_remaining"` |  |
+| `"daysRemaining"` |  |
 | `"issuer"` |  |
 | `"timestamp"` |  |
 | `"url"` |  |
 | `"valid"` |  |
-| `"valid_from"` |  |
-| `"valid_to"` |  |
+| `"validFrom"` |  |
+| `"validTo"` |  |
 
 Operations: Load.
 
@@ -362,9 +362,9 @@ Create an instance: `performance := client.Performance(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float64` |  |
-| `page_size` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float64` |  |
+| `pageSize` | `int` |  |
+| `requests` | `int` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -393,7 +393,7 @@ Create an instance: `screenshot := client.Screenshot(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot_url` | `string` |  |
+| `screenshotUrl` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -422,9 +422,9 @@ Create an instance: `seo := client.Seo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `found_on` | `string` |  |
+| `foundOn` | `string` |  |
 | `link` | `string` |  |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 
 #### Example: List
 
@@ -451,9 +451,9 @@ Create an instance: `seoAnalysi := client.SeoAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `heading` | `map[string]any` |  |
-| `image` | `map[string]any` |  |
-| `meta_description` | `string` |  |
+| `headings` | `map[string]any` |  |
+| `images` | `map[string]any` |  |
+| `metaDescription` | `string` |  |
 | `score` | `float64` |  |
 | `timestamp` | `string` |  |
 | `title` | `string` |  |
@@ -484,13 +484,13 @@ Create an instance: `ssl := client.Ssl(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -605,11 +605,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-performance := client.Performance(nil)
-performance.Load(nil, nil)
+screenshot := client.Screenshot(nil)
+screenshot.Load(nil, nil)
 
-// performance.Data() now returns the performance data from the last load
-// performance.Match() returns the last match criteria
+// screenshot.Data() now returns the screenshot data from the last load
+// screenshot.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

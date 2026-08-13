@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local performance, err = client:Performance():load()
+local screenshot, err = client:Screenshot():load()
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Performance():load()
+local result, err = client:Screenshot():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -232,9 +232,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `requests` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -246,7 +246,7 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot_url` |  |
+| `screenshotUrl` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -258,9 +258,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `found_on` |  |
+| `foundOn` |  |
 | `link` |  |
-| `status_code` |  |
+| `statusCode` |  |
 
 Operations: List.
 
@@ -270,9 +270,9 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `heading` |  |
-| `image` |  |
-| `meta_description` |  |
+| `headings` |  |
+| `images` |  |
+| `metaDescription` |  |
 | `score` |  |
 | `timestamp` |  |
 | `title` |  |
@@ -286,13 +286,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `timestamp` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -329,9 +329,9 @@ Create an instance: `local performance = client:Performance(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `number` |  |
-| `page_size` | `number` |  |
-| `request` | `number` |  |
+| `loadTime` | `number` |  |
+| `pageSize` | `number` |  |
+| `requests` | `number` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -356,7 +356,7 @@ Create an instance: `local screenshot = client:Screenshot(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot_url` | `string` |  |
+| `screenshotUrl` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -381,9 +381,9 @@ Create an instance: `local seo = client:Seo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `found_on` | `string` |  |
+| `foundOn` | `string` |  |
 | `link` | `string` |  |
-| `status_code` | `number` |  |
+| `statusCode` | `number` |  |
 
 #### Example: List
 
@@ -406,9 +406,9 @@ Create an instance: `local seo_analysi = client:SeoAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `heading` | `table` |  |
-| `image` | `table` |  |
-| `meta_description` | `string` |  |
+| `headings` | `table` |  |
+| `images` | `table` |  |
+| `metaDescription` | `string` |  |
 | `score` | `number` |  |
 | `timestamp` | `string` |  |
 | `title` | `string` |  |
@@ -435,13 +435,13 @@ Create an instance: `local ssl = client:Ssl(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `number` |  |
+| `daysRemaining` | `number` |  |
 | `issuer` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 | `valid` | `boolean` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -551,11 +551,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local performance = client:Performance()
-performance:load()
+local screenshot = client:Screenshot()
+screenshot:load()
 
--- performance:data_get() now returns the performance data from the last load
--- performance:match_get() returns the last match criteria
+-- screenshot:data_get() now returns the screenshot data from the last load
+-- screenshot:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

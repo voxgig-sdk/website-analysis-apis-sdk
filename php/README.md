@@ -35,7 +35,7 @@ $client = new WebsiteAnalysisApisSDK();
 
 ```php
 try {
-    // load() returns the bare Performance record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Performance record (throws on error).
     $performance = $client->Performance()->load();
     print_r($performance);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $performance = $client->Performance()->load();
+    $screenshot = $client->Screenshot()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = WebsiteAnalysisApisSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$performance = $client->Performance()->load();
-print_r($performance);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$screenshot = $client->Screenshot()->load();
+print_r($screenshot);
 ```
 
 ### Use a custom fetch function
@@ -228,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -250,9 +251,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `requests` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -264,7 +265,7 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot_url` |  |
+| `screenshotUrl` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -276,9 +277,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `found_on` |  |
+| `foundOn` |  |
 | `link` |  |
-| `status_code` |  |
+| `statusCode` |  |
 
 Operations: List.
 
@@ -288,9 +289,9 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `heading` |  |
-| `image` |  |
-| `meta_description` |  |
+| `headings` |  |
+| `images` |  |
+| `metaDescription` |  |
 | `score` |  |
 | `timestamp` |  |
 | `title` |  |
@@ -304,13 +305,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `timestamp` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -347,16 +348,16 @@ Create an instance: `$performance = $client->Performance();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float` |  |
-| `page_size` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float` |  |
+| `pageSize` | `int` |  |
+| `requests` | `int` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Performance record (throws on error).
+// load() returns the ENTITY — call data_get() for the Performance record (throws on error).
 $performance = $client->Performance()->load();
 ```
 
@@ -375,14 +376,14 @@ Create an instance: `$screenshot = $client->Screenshot();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot_url` | `string` |  |
+| `screenshotUrl` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Screenshot record (throws on error).
+// load() returns the ENTITY — call data_get() for the Screenshot record (throws on error).
 $screenshot = $client->Screenshot()->load();
 ```
 
@@ -401,9 +402,9 @@ Create an instance: `$seo = $client->Seo();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `found_on` | `string` |  |
+| `foundOn` | `string` |  |
 | `link` | `string` |  |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 
 #### Example: List
 
@@ -427,9 +428,9 @@ Create an instance: `$seo_analysi = $client->SeoAnalysi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `heading` | `array` |  |
-| `image` | `array` |  |
-| `meta_description` | `string` |  |
+| `headings` | `array` |  |
+| `images` | `array` |  |
+| `metaDescription` | `string` |  |
 | `score` | `float` |  |
 | `timestamp` | `string` |  |
 | `title` | `string` |  |
@@ -438,7 +439,7 @@ Create an instance: `$seo_analysi = $client->SeoAnalysi();`
 #### Example: Load
 
 ```php
-// load() returns the bare SeoAnalysi record (throws on error).
+// load() returns the ENTITY — call data_get() for the SeoAnalysi record (throws on error).
 $seo_analysi = $client->SeoAnalysi()->load();
 ```
 
@@ -457,18 +458,18 @@ Create an instance: `$ssl = $client->Ssl();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Ssl record (throws on error).
+// load() returns the ENTITY — call data_get() for the Ssl record (throws on error).
 $ssl = $client->Ssl()->load();
 ```
 
@@ -575,11 +576,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$performance = $client->Performance();
-$performance->load();
+$screenshot = $client->Screenshot();
+$screenshot->load();
 
-// $performance->data_get() now returns the performance data from the last load
-// $performance->match_get() returns the last match criteria
+// $screenshot->data_get() now returns the screenshot data from the last load
+// $screenshot->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

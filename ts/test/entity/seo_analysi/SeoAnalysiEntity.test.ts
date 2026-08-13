@@ -26,8 +26,8 @@ import {
 describe('SeoAnalysiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITEANALYSISAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITEANALYSISAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_ANALYSIS_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_ANALYSIS_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebsiteAnalysisApisSDK.test()
@@ -62,7 +62,7 @@ describe('SeoAnalysiEntity', async () => {
     // LOAD
     const seo_analysi_ref01_ent = client.SeoAnalysi()
     const seo_analysi_ref01_match_dt0: any = {}
-    const seo_analysi_ref01_data_dt0 = await seo_analysi_ref01_ent.load(seo_analysi_ref01_match_dt0)
+    const seo_analysi_ref01_data_dt0 = (await seo_analysi_ref01_ent.load(seo_analysi_ref01_match_dt0)).data()
     assert(null != seo_analysi_ref01_data_dt0)
 
 

@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WebsiteAnalysisApisSDK.test()
-const performance = await client.Performance().load()
-// performance is a bare Performance populated with mock data
-console.log(performance)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WebsiteAnalysisApisSDK.test({
+  entity: {
+    screenshot: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const screenshot = await client.Screenshot().load()
+// screenshot is the Screenshot entity, populated with mock data
+// — call screenshot.data() for the record itself
+console.log(screenshot)
 ```
 
 ### Python
 
 ```python
 client = WebsiteAnalysisApisSDK.test()
-performance = client.Performance().load()
-print(performance)
+screenshot = client.Screenshot().load()
+print(screenshot)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(performance)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = WebsiteAnalysisApisSDK::test([
-    "entity" => ["performance" => ["test01" => []]],
+    "entity" => ["screenshot" => ["test01" => []]],
 ]);
-$performance = $client->Performance()->load();
+$screenshot = $client->Screenshot()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Performance(nil).Load(
+result, err := client.Screenshot(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Performance(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = WebsiteAnalysisApisSDK.test({
-  "entity" => { "performance" => { "test01" => {} } },
+  "entity" => { "screenshot" => { "test01" => {} } },
 })
-performance = client.Performance.load()
+screenshot = client.Screenshot.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Performance():load()
+local result, err = client:Screenshot():load()
 ```
 
 ## Packages
@@ -187,7 +196,7 @@ require_once 'websiteanalysisapis_sdk.php';
 $client = new WebsiteAnalysisApisSDK();
 
 
-// Load a specific performance (returns the bare record; throws on error)
+// Load a specific performance (returns the ENTITY; call data_get() for the record; throws on error)
 $performance = $client->Performance()->load();
 print_r($performance);
 ```
@@ -215,7 +224,7 @@ require_relative "WebsiteAnalysisApis_sdk"
 client = WebsiteAnalysisApisSDK.new
 
 
-# Load a specific performance (returns the bare record; raises on error)
+# Load a specific performance (returns the ENTITY; call data_get for the record)
 performance = client.Performance.load()
 puts performance
 ```
@@ -349,6 +358,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://51-68-119-197.sslip.io/api](https://51-68-119-197.sslip.io/api)
 

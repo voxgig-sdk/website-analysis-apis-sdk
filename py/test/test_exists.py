@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WebsiteAnalysisApis SDK exists test
 
 import pytest
 from websiteanalysisapis_sdk import WebsiteAnalysisApisSDK

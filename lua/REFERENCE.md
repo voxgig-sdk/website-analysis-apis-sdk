@@ -110,9 +110,9 @@ local performance = client:Performance(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `number` | No |  |
-| `page_size` | `number` | No |  |
-| `request` | `number` | No |  |
+| `loadTime` | `number` | No |  |
+| `pageSize` | `number` | No |  |
+| `requests` | `number` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -166,7 +166,7 @@ local screenshot = client:Screenshot(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `string` | No |  |
+| `screenshotUrl` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -220,9 +220,9 @@ local seo = client:Seo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `string` | No |  |
+| `foundOn` | `string` | No |  |
 | `link` | `string` | No |  |
-| `status_code` | `number` | No |  |
+| `statusCode` | `number` | No |  |
 
 ### Operations
 
@@ -274,9 +274,9 @@ local seo_analysi = client:SeoAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `table` | No |  |
-| `image` | `table` | No |  |
-| `meta_description` | `string` | No |  |
+| `headings` | `table` | No |  |
+| `images` | `table` | No |  |
+| `metaDescription` | `string` | No |  |
 | `score` | `number` | No |  |
 | `timestamp` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -332,13 +332,13 @@ local ssl = client:Ssl(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `number` | No |  |
+| `daysRemaining` | `number` | No |  |
 | `issuer` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `boolean` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

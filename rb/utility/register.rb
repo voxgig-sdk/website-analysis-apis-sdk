@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ WebsiteAnalysisApisUtility.registrar = ->(u) {
   u.prepare_params = WebsiteAnalysisApisUtilities::PrepareParams
   u.prepare_path = WebsiteAnalysisApisUtilities::PreparePath
   u.prepare_query = WebsiteAnalysisApisUtilities::PrepareQuery
+  u.graphql_body = WebsiteAnalysisApisUtilities::GraphqlBody
+  u.graphql_errors = WebsiteAnalysisApisUtilities::GraphqlErrors
   u.result_basic = WebsiteAnalysisApisUtilities::ResultBasic
   u.result_body = WebsiteAnalysisApisUtilities::ResultBody
   u.result_headers = WebsiteAnalysisApisUtilities::ResultHeaders

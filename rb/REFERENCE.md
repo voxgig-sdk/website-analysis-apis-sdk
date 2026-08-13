@@ -113,9 +113,9 @@ performance = client.Performance
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `Float` | No |  |
-| `page_size` | `Integer` | No |  |
-| `request` | `Integer` | No |  |
+| `loadTime` | `Float` | No |  |
+| `pageSize` | `Integer` | No |  |
+| `requests` | `Integer` | No |  |
 | `timestamp` | `String` | No |  |
 | `url` | `String` | No |  |
 
@@ -169,7 +169,7 @@ screenshot = client.Screenshot
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `String` | No |  |
+| `screenshotUrl` | `String` | No |  |
 | `timestamp` | `String` | No |  |
 | `url` | `String` | No |  |
 
@@ -223,9 +223,9 @@ seo = client.Seo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `String` | No |  |
+| `foundOn` | `String` | No |  |
 | `link` | `String` | No |  |
-| `status_code` | `Integer` | No |  |
+| `statusCode` | `Integer` | No |  |
 
 ### Operations
 
@@ -277,9 +277,9 @@ seo_analysi = client.SeoAnalysi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `Hash` | No |  |
-| `image` | `Hash` | No |  |
-| `meta_description` | `String` | No |  |
+| `headings` | `Hash` | No |  |
+| `images` | `Hash` | No |  |
+| `metaDescription` | `String` | No |  |
 | `score` | `Float` | No |  |
 | `timestamp` | `String` | No |  |
 | `title` | `String` | No |  |
@@ -335,13 +335,13 @@ ssl = client.Ssl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `Integer` | No |  |
+| `daysRemaining` | `Integer` | No |  |
 | `issuer` | `String` | No |  |
 | `timestamp` | `String` | No |  |
 | `url` | `String` | No |  |
 | `valid` | `Boolean` | No |  |
-| `valid_from` | `String` | No |  |
-| `valid_to` | `String` | No |  |
+| `validFrom` | `String` | No |  |
+| `validTo` | `String` | No |  |
 
 ### Operations
 

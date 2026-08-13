@@ -26,8 +26,8 @@ import {
 describe('PerformanceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITEANALYSISAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITEANALYSISAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_ANALYSIS_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_ANALYSIS_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebsiteAnalysisApisSDK.test()
@@ -62,7 +62,7 @@ describe('PerformanceEntity', async () => {
     // LOAD
     const performance_ref01_ent = client.Performance()
     const performance_ref01_match_dt0: any = {}
-    const performance_ref01_data_dt0 = await performance_ref01_ent.load(performance_ref01_match_dt0)
+    const performance_ref01_data_dt0 = (await performance_ref01_ent.load(performance_ref01_match_dt0)).data()
     assert(null != performance_ref01_data_dt0)
 
 

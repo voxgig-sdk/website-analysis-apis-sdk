@@ -6,59 +6,63 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/website-analysis-apis-sdk/go/core"
+)
 
 // Performance is the typed data model for the performance entity.
 type Performance struct {
-	LoadTime *float64 `json:"load_time,omitempty"`
-	PageSize *int `json:"page_size,omitempty"`
-	Request *int `json:"request,omitempty"`
+	LoadTime *float64 `json:"loadTime,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
+	Requests *int `json:"requests,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // PerformanceLoadMatch is the typed request payload for Performance.LoadTyped.
 type PerformanceLoadMatch struct {
-	LoadTime *float64 `json:"load_time,omitempty"`
-	PageSize *int `json:"page_size,omitempty"`
-	Request *int `json:"request,omitempty"`
+	LoadTime *float64 `json:"loadTime,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
+	Requests *int `json:"requests,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // Screenshot is the typed data model for the screenshot entity.
 type Screenshot struct {
-	ScreenshotUrl *string `json:"screenshot_url,omitempty"`
+	ScreenshotUrl *string `json:"screenshotUrl,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // ScreenshotLoadMatch is the typed request payload for Screenshot.LoadTyped.
 type ScreenshotLoadMatch struct {
-	ScreenshotUrl *string `json:"screenshot_url,omitempty"`
+	ScreenshotUrl *string `json:"screenshotUrl,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // Seo is the typed data model for the seo entity.
 type Seo struct {
-	FoundOn *string `json:"found_on,omitempty"`
+	FoundOn *string `json:"foundOn,omitempty"`
 	Link *string `json:"link,omitempty"`
-	StatusCode *int `json:"status_code,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 }
 
 // SeoListMatch is the typed request payload for Seo.ListTyped.
 type SeoListMatch struct {
-	FoundOn *string `json:"found_on,omitempty"`
+	FoundOn *string `json:"foundOn,omitempty"`
 	Link *string `json:"link,omitempty"`
-	StatusCode *int `json:"status_code,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 }
 
 // SeoAnalysi is the typed data model for the seo_analysi entity.
 type SeoAnalysi struct {
-	Heading *map[string]any `json:"heading,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	Headings *map[string]any `json:"headings,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	MetaDescription *string `json:"metaDescription,omitempty"`
 	Score *float64 `json:"score,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Title *string `json:"title,omitempty"`
@@ -67,9 +71,9 @@ type SeoAnalysi struct {
 
 // SeoAnalysiLoadMatch is the typed request payload for SeoAnalysi.LoadTyped.
 type SeoAnalysiLoadMatch struct {
-	Heading *map[string]any `json:"heading,omitempty"`
-	Image *map[string]any `json:"image,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	Headings *map[string]any `json:"headings,omitempty"`
+	Images *map[string]any `json:"images,omitempty"`
+	MetaDescription *string `json:"metaDescription,omitempty"`
 	Score *float64 `json:"score,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Title *string `json:"title,omitempty"`
@@ -78,24 +82,24 @@ type SeoAnalysiLoadMatch struct {
 
 // Ssl is the typed data model for the ssl entity.
 type Ssl struct {
-	DaysRemaining *int `json:"days_remaining,omitempty"`
+	DaysRemaining *int `json:"daysRemaining,omitempty"`
 	Issuer *string `json:"issuer,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"valid_from,omitempty"`
-	ValidTo *string `json:"valid_to,omitempty"`
+	ValidFrom *string `json:"validFrom,omitempty"`
+	ValidTo *string `json:"validTo,omitempty"`
 }
 
 // SslLoadMatch is the typed request payload for Ssl.LoadTyped.
 type SslLoadMatch struct {
-	DaysRemaining *int `json:"days_remaining,omitempty"`
+	DaysRemaining *int `json:"daysRemaining,omitempty"`
 	Issuer *string `json:"issuer,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"valid_from,omitempty"`
-	ValidTo *string `json:"valid_to,omitempty"`
+	ValidFrom *string `json:"validFrom,omitempty"`
+	ValidTo *string `json:"validTo,omitempty"`
 }
 
 // TechStack is the typed data model for the tech_stack entity.
@@ -124,12 +128,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -141,12 +159,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

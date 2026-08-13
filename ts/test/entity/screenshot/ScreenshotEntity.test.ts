@@ -26,8 +26,8 @@ import {
 describe('ScreenshotEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITEANALYSISAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITEANALYSISAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_ANALYSIS_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_ANALYSIS_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebsiteAnalysisApisSDK.test()
@@ -62,7 +62,7 @@ describe('ScreenshotEntity', async () => {
     // LOAD
     const screenshot_ref01_ent = client.Screenshot()
     const screenshot_ref01_match_dt0: any = {}
-    const screenshot_ref01_data_dt0 = await screenshot_ref01_ent.load(screenshot_ref01_match_dt0)
+    const screenshot_ref01_data_dt0 = (await screenshot_ref01_ent.load(screenshot_ref01_match_dt0)).data()
     assert(null != screenshot_ref01_data_dt0)
 
 

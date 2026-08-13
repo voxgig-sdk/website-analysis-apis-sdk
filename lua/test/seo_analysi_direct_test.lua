@@ -66,11 +66,11 @@ function seo_analysi_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["WEBSITEANALYSISAPIS_TEST_SEO_ANALYSI_ENTID"] = {},
-    ["WEBSITEANALYSISAPIS_TEST_LIVE"] = "FALSE",
+    ["WEBSITE_ANALYSIS_APIS_TEST_SEO_ANALYSI_ENTID"] = {},
+    ["WEBSITE_ANALYSIS_APIS_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["WEBSITEANALYSISAPIS_TEST_LIVE"] == "TRUE"
+  local live = env["WEBSITE_ANALYSIS_APIS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const performance = await client.Performance().load()
-  console.log(performance)
+  const screenshot = await client.Screenshot().load()
+  console.log(screenshot)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,9 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WebsiteAnalysisApisSDK.test()
 
-const performance = await client.Performance().load()
-// performance is a bare entity populated with mock response data
-console.log(performance)
+const screenshot = await client.Screenshot().load()
+// screenshot is the entity, populated with mock response data
+// — call screenshot.data() for the record itself
+console.log(screenshot)
 ```
 
 You can also use the instance method:
@@ -137,7 +138,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Performance()
+const entity = client.Screenshot()
 
 // First call runs the operation and stores its result
 await entity.load()
@@ -292,9 +293,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `requests` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -306,7 +307,7 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot_url` |  |
+| `screenshotUrl` |  |
 | `timestamp` |  |
 | `url` |  |
 
@@ -318,9 +319,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `found_on` |  |
+| `foundOn` |  |
 | `link` |  |
-| `status_code` |  |
+| `statusCode` |  |
 
 Operations: list.
 
@@ -330,9 +331,9 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `heading` |  |
-| `image` |  |
-| `meta_description` |  |
+| `headings` |  |
+| `images` |  |
+| `metaDescription` |  |
 | `score` |  |
 | `timestamp` |  |
 | `title` |  |
@@ -346,13 +347,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `timestamp` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: load.
 
@@ -389,9 +390,9 @@ Create an instance: `const performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `number` |  |
-| `page_size` | `number` |  |
-| `request` | `number` |  |
+| `loadTime` | `number` |  |
+| `pageSize` | `number` |  |
+| `requests` | `number` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -416,7 +417,7 @@ Create an instance: `const screenshot = client.Screenshot()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot_url` | `string` |  |
+| `screenshotUrl` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 
@@ -441,9 +442,9 @@ Create an instance: `const seo = client.Seo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `found_on` | `string` |  |
+| `foundOn` | `string` |  |
 | `link` | `string` |  |
-| `status_code` | `number` |  |
+| `statusCode` | `number` |  |
 
 #### Example: List
 
@@ -466,9 +467,9 @@ Create an instance: `const seo_analysi = client.SeoAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `heading` | `Record<string, any>` |  |
-| `image` | `Record<string, any>` |  |
-| `meta_description` | `string` |  |
+| `headings` | `Record<string, any>` |  |
+| `images` | `Record<string, any>` |  |
+| `metaDescription` | `string` |  |
 | `score` | `number` |  |
 | `timestamp` | `string` |  |
 | `title` | `string` |  |
@@ -495,13 +496,13 @@ Create an instance: `const ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `number` |  |
+| `daysRemaining` | `number` |  |
 | `issuer` | `string` |  |
 | `timestamp` | `string` |  |
 | `url` | `string` |  |
 | `valid` | `boolean` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -604,11 +605,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const performance = client.Performance()
-await performance.load()
+const screenshot = client.Screenshot()
+await screenshot.load()
 
-// performance.data() now returns the performance data from the last `load`
-// performance.match() returns the last match criteria
+// screenshot.data() now returns the screenshot data from the last `load`
+// screenshot.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

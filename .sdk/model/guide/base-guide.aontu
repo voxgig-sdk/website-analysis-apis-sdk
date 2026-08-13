@@ -20,6 +20,7 @@ guide: {
   entity: seo: {
     path: "/api/seo": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.brokenLinks`")|top
     }
   }
 
@@ -38,6 +39,7 @@ guide: {
   entity: tech_stack: {
     path: "/api/techstack": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.technologies`")|top
     }
   }
 

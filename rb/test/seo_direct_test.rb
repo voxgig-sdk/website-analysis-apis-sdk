@@ -60,11 +60,11 @@ def seo_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WEBSITEANALYSISAPIS_TEST_SEO_ENTID" => {},
-    "WEBSITEANALYSISAPIS_TEST_LIVE" => "FALSE",
+    "WEBSITE_ANALYSIS_APIS_TEST_SEO_ENTID" => {},
+    "WEBSITE_ANALYSIS_APIS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WEBSITEANALYSISAPIS_TEST_LIVE"] == "TRUE"
+  live = env["WEBSITE_ANALYSIS_APIS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

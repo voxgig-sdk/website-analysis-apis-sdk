@@ -2,9 +2,9 @@
   "existing": {
     "seo_analysi": {
       "SEO_ANALYSI00": {
-        "heading": {},
-        "image": {},
-        "meta_description": "s48",
+        "headings": {},
+        "images": {},
+        "metaDescription": "s48",
         "score": 73,
         "timestamp": "s4a",
         "title": "s4b",
@@ -12,9 +12,9 @@
         "id": "SEO_ANALYSI00"
       },
       "SEO_ANALYSI01": {
-        "heading": {},
-        "image": {},
-        "meta_description": "s8e",
+        "headings": {},
+        "images": {},
+        "metaDescription": "s8e",
         "score": 143,
         "timestamp": "s90",
         "title": "s91",
@@ -22,9 +22,9 @@
         "id": "SEO_ANALYSI01"
       },
       "SEO_ANALYSI02": {
-        "heading": {},
-        "image": {},
-        "meta_description": "sd4",
+        "headings": {},
+        "images": {},
+        "metaDescription": "sd4",
         "score": 213,
         "timestamp": "sd6",
         "title": "sd7",
@@ -36,9 +36,9 @@
   "new": {
     "seo_analysi": {
       "seo_analysi_ref01": {
-        "heading": {},
-        "image": {},
-        "meta_description": "s11a",
+        "headings": {},
+        "images": {},
+        "metaDescription": "s11a",
         "score": 283,
         "timestamp": "s11c",
         "title": "s11d",

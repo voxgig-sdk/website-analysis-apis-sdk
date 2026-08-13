@@ -176,9 +176,9 @@ const performance = client.Performance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `number` | No |  |
-| `page_size` | `number` | No |  |
-| `request` | `number` | No |  |
+| `loadTime` | `number` | No |  |
+| `pageSize` | `number` | No |  |
+| `requests` | `number` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -230,7 +230,7 @@ const screenshot = client.Screenshot()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `string` | No |  |
+| `screenshotUrl` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -282,9 +282,9 @@ const seo = client.Seo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `string` | No |  |
+| `foundOn` | `string` | No |  |
 | `link` | `string` | No |  |
-| `status_code` | `number` | No |  |
+| `statusCode` | `number` | No |  |
 
 ### Operations
 
@@ -334,9 +334,9 @@ const seo_analysi = client.SeoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `Record<string, any>` | No |  |
-| `image` | `Record<string, any>` | No |  |
-| `meta_description` | `string` | No |  |
+| `headings` | `Record<string, any>` | No |  |
+| `images` | `Record<string, any>` | No |  |
+| `metaDescription` | `string` | No |  |
 | `score` | `number` | No |  |
 | `timestamp` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -390,13 +390,13 @@ const ssl = client.Ssl()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `number` | No |  |
+| `daysRemaining` | `number` | No |  |
 | `issuer` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `boolean` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

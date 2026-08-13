@@ -31,21 +31,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "load_time",
+            ["name"] = "loadTime",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "page_size",
+            ["name"] = "pageSize",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "request",
+            ["name"] = "requests",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -86,6 +86,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/performance",
                 ["parts"] = {
@@ -115,7 +116,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "screenshot_url",
+            ["name"] = "screenshotUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -156,6 +157,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/screenshot",
                 ["parts"] = {
@@ -185,7 +187,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "found_on",
+            ["name"] = "foundOn",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -199,7 +201,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "status_code",
+            ["name"] = "statusCode",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -226,6 +228,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/seo",
                 ["parts"] = {
@@ -239,7 +242,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.brokenLinks`",
                 },
                 ["index$"] = 0,
               },
@@ -255,21 +258,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "heading",
+            ["name"] = "headings",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "image",
+            ["name"] = "images",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "meta_description",
+            ["name"] = "metaDescription",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -324,6 +327,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/seo-audit",
                 ["parts"] = {
@@ -353,7 +357,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "days_remaining",
+            ["name"] = "daysRemaining",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -388,14 +392,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "valid_from",
+            ["name"] = "validFrom",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "valid_to",
+            ["name"] = "validTo",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -422,6 +426,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ssl",
                 ["parts"] = {
@@ -492,6 +497,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/techstack",
                 ["parts"] = {
@@ -505,7 +511,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.technologies`",
                 },
                 ["index$"] = 0,
               },

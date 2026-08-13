@@ -23,8 +23,8 @@ module WebsiteAnalysisApisTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WEBSITEANALYSISAPIS_TEST_LIVE")
-    override = getenv("WEBSITEANALYSISAPIS_TEST_OVERRIDE")
+    live = getenv("WEBSITE_ANALYSIS_APIS_TEST_LIVE")
+    override = getenv("WEBSITE_ANALYSIS_APIS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WebsiteAnalysisApisTestRunner
       end
     end
 
-    explain = getenv("WEBSITEANALYSISAPIS_TEST_EXPLAIN")
-    m["WEBSITEANALYSISAPIS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WEBSITE_ANALYSIS_APIS_TEST_EXPLAIN")
+    m["WEBSITE_ANALYSIS_APIS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

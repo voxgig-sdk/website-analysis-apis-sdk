@@ -2,19 +2,19 @@
   "existing": {
     "screenshot": {
       "SCREENSHOT00": {
-        "screenshot_url": "s1e",
+        "screenshotUrl": "s1e",
         "timestamp": "s1f",
         "url": "s20",
         "id": "SCREENSHOT00"
       },
       "SCREENSHOT01": {
-        "screenshot_url": "s3c",
+        "screenshotUrl": "s3c",
         "timestamp": "s3d",
         "url": "s3e",
         "id": "SCREENSHOT01"
       },
       "SCREENSHOT02": {
-        "screenshot_url": "s5a",
+        "screenshotUrl": "s5a",
         "timestamp": "s5b",
         "url": "s5c",
         "id": "SCREENSHOT02"
@@ -24,7 +24,7 @@
   "new": {
     "screenshot": {
       "screenshot_ref01": {
-        "screenshot_url": "s78",
+        "screenshotUrl": "s78",
         "timestamp": "s79",
         "url": "s7a"
       }

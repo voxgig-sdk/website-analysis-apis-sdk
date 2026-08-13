@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import WebsiteAnalysisApisControl
-from core.error import WebsiteAnalysisApisError
-from core.result import WebsiteAnalysisApisResult
-from core.spec import WebsiteAnalysisApisSpec
+from websiteanalysisapis_sdk.config import make_config
+from websiteanalysisapis_sdk.features import _make_feature
+from websiteanalysisapis_sdk.core.control import WebsiteAnalysisApisControl
+from websiteanalysisapis_sdk.core.error import WebsiteAnalysisApisError
+from websiteanalysisapis_sdk.core.result import WebsiteAnalysisApisResult
+from websiteanalysisapis_sdk.core.spec import WebsiteAnalysisApisSpec
 
 
 # True when this SDK was generated with the named feature.

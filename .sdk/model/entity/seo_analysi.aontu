@@ -6,17 +6,17 @@ main: kit: entity: seo_analysi: {
 
   fields: [
     {
-      name: "heading"
+      name: "headings"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "image"
+      name: "images"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "meta_description"
+      name: "metaDescription"
       req: false
       type: "`$STRING`"
     }

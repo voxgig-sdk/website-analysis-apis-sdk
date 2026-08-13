@@ -6,49 +6,49 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Performance {
-  load_time?: number
-  page_size?: number
-  request?: number
+  loadTime?: number
+  pageSize?: number
+  requests?: number
   timestamp?: string
   url?: string
 }
 
 export interface PerformanceLoadMatch {
-  load_time?: number
-  page_size?: number
-  request?: number
+  loadTime?: number
+  pageSize?: number
+  requests?: number
   timestamp?: string
   url?: string
 }
 
 export interface Screenshot {
-  screenshot_url?: string
+  screenshotUrl?: string
   timestamp?: string
   url?: string
 }
 
 export interface ScreenshotLoadMatch {
-  screenshot_url?: string
+  screenshotUrl?: string
   timestamp?: string
   url?: string
 }
 
 export interface Seo {
-  found_on?: string
+  foundOn?: string
   link?: string
-  status_code?: number
+  statusCode?: number
 }
 
 export interface SeoListMatch {
-  found_on?: string
+  foundOn?: string
   link?: string
-  status_code?: number
+  statusCode?: number
 }
 
 export interface SeoAnalysi {
-  heading?: Record<string, any>
-  image?: Record<string, any>
-  meta_description?: string
+  headings?: Record<string, any>
+  images?: Record<string, any>
+  metaDescription?: string
   score?: number
   timestamp?: string
   title?: string
@@ -56,9 +56,9 @@ export interface SeoAnalysi {
 }
 
 export interface SeoAnalysiLoadMatch {
-  heading?: Record<string, any>
-  image?: Record<string, any>
-  meta_description?: string
+  headings?: Record<string, any>
+  images?: Record<string, any>
+  metaDescription?: string
   score?: number
   timestamp?: string
   title?: string
@@ -66,23 +66,23 @@ export interface SeoAnalysiLoadMatch {
 }
 
 export interface Ssl {
-  days_remaining?: number
+  daysRemaining?: number
   issuer?: string
   timestamp?: string
   url?: string
   valid?: boolean
-  valid_from?: string
-  valid_to?: string
+  validFrom?: string
+  validTo?: string
 }
 
 export interface SslLoadMatch {
-  days_remaining?: number
+  daysRemaining?: number
   issuer?: string
   timestamp?: string
   url?: string
   valid?: boolean
-  valid_from?: string
-  valid_to?: string
+  validFrom?: string
+  validTo?: string
 }
 
 export interface TechStack {

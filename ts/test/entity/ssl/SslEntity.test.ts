@@ -26,8 +26,8 @@ import {
 describe('SslEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITEANALYSISAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITEANALYSISAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_ANALYSIS_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_ANALYSIS_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebsiteAnalysisApisSDK.test()
@@ -62,7 +62,7 @@ describe('SslEntity', async () => {
     // LOAD
     const ssl_ref01_ent = client.Ssl()
     const ssl_ref01_match_dt0: any = {}
-    const ssl_ref01_data_dt0 = await ssl_ref01_ent.load(ssl_ref01_match_dt0)
+    const ssl_ref01_data_dt0 = (await ssl_ref01_ent.load(ssl_ref01_match_dt0)).data()
     assert(null != ssl_ref01_data_dt0)
 
 

@@ -2,25 +2,25 @@
   "existing": {
     "performance": {
       "PERFORMANCE00": {
-        "load_time": 50,
-        "page_size": "s33",
-        "request": "s34",
+        "loadTime": 50,
+        "pageSize": "s33",
+        "requests": "s34",
         "timestamp": "s35",
         "url": "s36",
         "id": "PERFORMANCE00"
       },
       "PERFORMANCE01": {
-        "load_time": 100,
-        "page_size": "s65",
-        "request": "s66",
+        "loadTime": 100,
+        "pageSize": "s65",
+        "requests": "s66",
         "timestamp": "s67",
         "url": "s68",
         "id": "PERFORMANCE01"
       },
       "PERFORMANCE02": {
-        "load_time": 150,
-        "page_size": "s97",
-        "request": "s98",
+        "loadTime": 150,
+        "pageSize": "s97",
+        "requests": "s98",
         "timestamp": "s99",
         "url": "s9a",
         "id": "PERFORMANCE02"
@@ -30,9 +30,9 @@
   "new": {
     "performance": {
       "performance_ref01": {
-        "load_time": 200,
-        "page_size": "sc9",
-        "request": "sca",
+        "loadTime": 200,
+        "pageSize": "sc9",
+        "requests": "sca",
         "timestamp": "scb",
         "url": "scc"
       }

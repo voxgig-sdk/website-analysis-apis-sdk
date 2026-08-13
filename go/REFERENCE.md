@@ -118,9 +118,9 @@ fmt.Println(performance.GetName()) // "performance"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `float64` | No |  |
-| `page_size` | `int` | No |  |
-| `request` | `int` | No |  |
+| `loadTime` | `float64` | No |  |
+| `pageSize` | `int` | No |  |
+| `requests` | `int` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -173,7 +173,7 @@ fmt.Println(screenshot.GetName()) // "screenshot"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `string` | No |  |
+| `screenshotUrl` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -226,9 +226,9 @@ fmt.Println(seo.GetName()) // "seo"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `string` | No |  |
+| `foundOn` | `string` | No |  |
 | `link` | `string` | No |  |
-| `status_code` | `int` | No |  |
+| `statusCode` | `int` | No |  |
 
 ### Operations
 
@@ -279,9 +279,9 @@ fmt.Println(seoAnalysi.GetName()) // "seo_analysi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `map[string]any` | No |  |
-| `image` | `map[string]any` | No |  |
-| `meta_description` | `string` | No |  |
+| `headings` | `map[string]any` | No |  |
+| `images` | `map[string]any` | No |  |
+| `metaDescription` | `string` | No |  |
 | `score` | `float64` | No |  |
 | `timestamp` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -336,13 +336,13 @@ fmt.Println(ssl.GetName()) // "ssl"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `int` | No |  |
+| `daysRemaining` | `int` | No |  |
 | `issuer` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

@@ -112,9 +112,9 @@ $performance = $client->Performance();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `float` | No |  |
-| `page_size` | `int` | No |  |
-| `request` | `int` | No |  |
+| `loadTime` | `float` | No |  |
+| `pageSize` | `int` | No |  |
+| `requests` | `int` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -168,7 +168,7 @@ $screenshot = $client->Screenshot();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot_url` | `string` | No |  |
+| `screenshotUrl` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -222,9 +222,9 @@ $seo = $client->Seo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `found_on` | `string` | No |  |
+| `foundOn` | `string` | No |  |
 | `link` | `string` | No |  |
-| `status_code` | `int` | No |  |
+| `statusCode` | `int` | No |  |
 
 ### Operations
 
@@ -276,9 +276,9 @@ $seo_analysi = $client->SeoAnalysi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `heading` | `array` | No |  |
-| `image` | `array` | No |  |
-| `meta_description` | `string` | No |  |
+| `headings` | `array` | No |  |
+| `images` | `array` | No |  |
+| `metaDescription` | `string` | No |  |
 | `score` | `float` | No |  |
 | `timestamp` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -334,13 +334,13 @@ $ssl = $client->Ssl();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `int` | No |  |
+| `daysRemaining` | `int` | No |  |
 | `issuer` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

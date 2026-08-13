@@ -10,13 +10,13 @@
 
 # Performance entity data model.
 #
-# @!attribute [rw] load_time
+# @!attribute [rw] loadTime
 #   @return [Float, nil]
 #
-# @!attribute [rw] page_size
+# @!attribute [rw] pageSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] request
+# @!attribute [rw] requests
 #   @return [Integer, nil]
 #
 # @!attribute [rw] timestamp
@@ -25,9 +25,9 @@
 # @!attribute [rw] url
 #   @return [String, nil]
 Performance = Struct.new(
-  :load_time,
-  :page_size,
-  :request,
+  :loadTime,
+  :pageSize,
+  :requests,
   :timestamp,
   :url,
   keyword_init: true
@@ -35,13 +35,13 @@ Performance = Struct.new(
 
 # Request payload for Performance#load.
 #
-# @!attribute [rw] load_time
+# @!attribute [rw] loadTime
 #   @return [Float, nil]
 #
-# @!attribute [rw] page_size
+# @!attribute [rw] pageSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] request
+# @!attribute [rw] requests
 #   @return [Integer, nil]
 #
 # @!attribute [rw] timestamp
@@ -50,9 +50,9 @@ Performance = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 PerformanceLoadMatch = Struct.new(
-  :load_time,
-  :page_size,
-  :request,
+  :loadTime,
+  :pageSize,
+  :requests,
   :timestamp,
   :url,
   keyword_init: true
@@ -60,7 +60,7 @@ PerformanceLoadMatch = Struct.new(
 
 # Screenshot entity data model.
 #
-# @!attribute [rw] screenshot_url
+# @!attribute [rw] screenshotUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
@@ -69,7 +69,7 @@ PerformanceLoadMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 Screenshot = Struct.new(
-  :screenshot_url,
+  :screenshotUrl,
   :timestamp,
   :url,
   keyword_init: true
@@ -77,7 +77,7 @@ Screenshot = Struct.new(
 
 # Request payload for Screenshot#load.
 #
-# @!attribute [rw] screenshot_url
+# @!attribute [rw] screenshotUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] timestamp
@@ -86,7 +86,7 @@ Screenshot = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 ScreenshotLoadMatch = Struct.new(
-  :screenshot_url,
+  :screenshotUrl,
   :timestamp,
   :url,
   keyword_init: true
@@ -94,47 +94,47 @@ ScreenshotLoadMatch = Struct.new(
 
 # Seo entity data model.
 #
-# @!attribute [rw] found_on
+# @!attribute [rw] foundOn
 #   @return [String, nil]
 #
 # @!attribute [rw] link
 #   @return [String, nil]
 #
-# @!attribute [rw] status_code
+# @!attribute [rw] statusCode
 #   @return [Integer, nil]
 Seo = Struct.new(
-  :found_on,
+  :foundOn,
   :link,
-  :status_code,
+  :statusCode,
   keyword_init: true
 )
 
 # Request payload for Seo#list.
 #
-# @!attribute [rw] found_on
+# @!attribute [rw] foundOn
 #   @return [String, nil]
 #
 # @!attribute [rw] link
 #   @return [String, nil]
 #
-# @!attribute [rw] status_code
+# @!attribute [rw] statusCode
 #   @return [Integer, nil]
 SeoListMatch = Struct.new(
-  :found_on,
+  :foundOn,
   :link,
-  :status_code,
+  :statusCode,
   keyword_init: true
 )
 
 # SeoAnalysi entity data model.
 #
-# @!attribute [rw] heading
+# @!attribute [rw] headings
 #   @return [Hash, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] meta_description
+# @!attribute [rw] metaDescription
 #   @return [String, nil]
 #
 # @!attribute [rw] score
@@ -149,9 +149,9 @@ SeoListMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 SeoAnalysi = Struct.new(
-  :heading,
-  :image,
-  :meta_description,
+  :headings,
+  :images,
+  :metaDescription,
   :score,
   :timestamp,
   :title,
@@ -161,13 +161,13 @@ SeoAnalysi = Struct.new(
 
 # Request payload for SeoAnalysi#load.
 #
-# @!attribute [rw] heading
+# @!attribute [rw] headings
 #   @return [Hash, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] images
 #   @return [Hash, nil]
 #
-# @!attribute [rw] meta_description
+# @!attribute [rw] metaDescription
 #   @return [String, nil]
 #
 # @!attribute [rw] score
@@ -182,9 +182,9 @@ SeoAnalysi = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 SeoAnalysiLoadMatch = Struct.new(
-  :heading,
-  :image,
-  :meta_description,
+  :headings,
+  :images,
+  :metaDescription,
   :score,
   :timestamp,
   :title,
@@ -194,7 +194,7 @@ SeoAnalysiLoadMatch = Struct.new(
 
 # Ssl entity data model.
 #
-# @!attribute [rw] days_remaining
+# @!attribute [rw] daysRemaining
 #   @return [Integer, nil]
 #
 # @!attribute [rw] issuer
@@ -209,25 +209,25 @@ SeoAnalysiLoadMatch = Struct.new(
 # @!attribute [rw] valid
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] valid_from
+# @!attribute [rw] validFrom
 #   @return [String, nil]
 #
-# @!attribute [rw] valid_to
+# @!attribute [rw] validTo
 #   @return [String, nil]
 Ssl = Struct.new(
-  :days_remaining,
+  :daysRemaining,
   :issuer,
   :timestamp,
   :url,
   :valid,
-  :valid_from,
-  :valid_to,
+  :validFrom,
+  :validTo,
   keyword_init: true
 )
 
 # Request payload for Ssl#load.
 #
-# @!attribute [rw] days_remaining
+# @!attribute [rw] daysRemaining
 #   @return [Integer, nil]
 #
 # @!attribute [rw] issuer
@@ -242,19 +242,19 @@ Ssl = Struct.new(
 # @!attribute [rw] valid
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] valid_from
+# @!attribute [rw] validFrom
 #   @return [String, nil]
 #
-# @!attribute [rw] valid_to
+# @!attribute [rw] validTo
 #   @return [String, nil]
 SslLoadMatch = Struct.new(
-  :days_remaining,
+  :daysRemaining,
   :issuer,
   :timestamp,
   :url,
   :valid,
-  :valid_from,
-  :valid_to,
+  :validFrom,
+  :validTo,
   keyword_init: true
 )
 
