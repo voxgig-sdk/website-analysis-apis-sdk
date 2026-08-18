@@ -23,6 +23,7 @@ build = {
   modules = {
     ["website-analysis-apis_sdk"] = "website-analysis-apis_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

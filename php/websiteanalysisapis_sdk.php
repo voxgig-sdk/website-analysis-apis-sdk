@@ -40,7 +40,7 @@ class WebsiteAnalysisApisSDK
         $utility = new WebsiteAnalysisApisUtility();
         $this->_utility = $utility;
 
-        $config = WebsiteAnalysisApisConfig::make_config();
+        $config = WebsiteAnalysisApisConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

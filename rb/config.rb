@@ -1,6 +1,20 @@
 # WebsiteAnalysisApis SDK configuration
 
 module WebsiteAnalysisApisConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -31,39 +45,24 @@ module WebsiteAnalysisApisConfig
         "performance" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "loadTime",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "pageSize",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "requests",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "url",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
           ],
           "name" => "performance",
@@ -73,11 +72,9 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -103,10 +100,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -116,25 +111,16 @@ module WebsiteAnalysisApisConfig
         "screenshot" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "screenshotUrl",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "url",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "screenshot",
@@ -144,11 +130,9 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -174,10 +158,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -187,25 +169,16 @@ module WebsiteAnalysisApisConfig
         "seo" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "foundOn",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "link",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "statusCode",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 2,
             },
           ],
           "name" => "seo",
@@ -215,11 +188,9 @@ module WebsiteAnalysisApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -245,10 +216,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body.brokenLinks`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -258,53 +227,32 @@ module WebsiteAnalysisApisConfig
         "seo_analysi" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "headings",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "images",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "metaDescription",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "score",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "title",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "url",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
           ],
           "name" => "seo_analysi",
@@ -314,11 +262,9 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -344,10 +290,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -357,53 +301,32 @@ module WebsiteAnalysisApisConfig
         "ssl" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "daysRemaining",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "issuer",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "url",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "valid",
-              "req" => false,
               "type" => "`$BOOLEAN`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "validFrom",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "validTo",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
           ],
           "name" => "ssl",
@@ -413,11 +336,9 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -443,10 +364,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -456,25 +375,16 @@ module WebsiteAnalysisApisConfig
         "tech_stack" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "category",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "version",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "tech_stack",
@@ -484,11 +394,9 @@ module WebsiteAnalysisApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "https://example.com",
                         "kind" => "query",
                         "name" => "url",
@@ -514,10 +422,8 @@ module WebsiteAnalysisApisConfig
                     "req" => "`reqdata`",
                     "res" => "`body.technologies`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
