@@ -36,30 +36,35 @@
               "active": true,
               "name": "loadTime",
               "req": false,
+              "short": "Page load time in milliseconds",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "pageSize",
               "req": false,
+              "short": "Total page size in bytes",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "requests",
               "req": false,
+              "short": "Number of HTTP requests",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "timestamp",
               "req": false,
+              "short": "Timestamp of the analysis",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The analyzed URL",
               "type": "`$STRING`"
             }
           ],
@@ -118,18 +123,21 @@
               "active": true,
               "name": "screenshotUrl",
               "req": false,
+              "short": "URL to the captured screenshot",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "timestamp",
               "req": false,
+              "short": "Timestamp of the capture",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The captured URL",
               "type": "`$STRING`"
             }
           ],
@@ -188,18 +196,21 @@
               "active": true,
               "name": "foundOn",
               "req": false,
+              "short": "Page where the broken link was found",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "link",
               "req": false,
+              "short": "The broken link URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "statusCode",
               "req": false,
+              "short": "HTTP status code returned",
               "type": "`$INTEGER`"
             }
           ],
@@ -258,6 +269,7 @@
               "active": true,
               "name": "headings",
               "req": false,
+              "short": "Heading tags analysis",
               "type": "`$OBJECT`"
             },
             {
@@ -270,30 +282,35 @@
               "active": true,
               "name": "metaDescription",
               "req": false,
+              "short": "Meta description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "score",
               "req": false,
+              "short": "Overall SEO score",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "timestamp",
               "req": false,
+              "short": "Timestamp of the audit",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Page title",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The audited URL",
               "type": "`$STRING`"
             }
           ],
@@ -352,42 +369,49 @@
               "active": true,
               "name": "daysRemaining",
               "req": false,
+              "short": "Days remaining until expiry",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "issuer",
               "req": false,
+              "short": "Certificate issuer",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "timestamp",
               "req": false,
+              "short": "Timestamp of the check",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The analyzed URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "valid",
               "req": false,
+              "short": "Whether the SSL certificate is valid",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "validFrom",
               "req": false,
+              "short": "Certificate valid from date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "validTo",
               "req": false,
+              "short": "Certificate expiry date",
               "type": "`$STRING`"
             }
           ],
@@ -446,18 +470,21 @@
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Technology category",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Technology name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "version",
               "req": false,
+              "short": "Detected version",
               "type": "`$STRING`"
             }
           ],

@@ -110,11 +110,11 @@ local performance = client:Performance(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `number` | No |  |
-| `pageSize` | `number` | No |  |
-| `requests` | `number` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `loadTime` | `number` | No | Page load time in milliseconds |
+| `pageSize` | `number` | No | Total page size in bytes |
+| `requests` | `number` | No | Number of HTTP requests |
+| `timestamp` | `string` | No | Timestamp of the analysis |
+| `url` | `string` | No | The analyzed URL |
 
 ### Operations
 
@@ -166,9 +166,9 @@ local screenshot = client:Screenshot(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshotUrl` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `screenshotUrl` | `string` | No | URL to the captured screenshot |
+| `timestamp` | `string` | No | Timestamp of the capture |
+| `url` | `string` | No | The captured URL |
 
 ### Operations
 
@@ -220,9 +220,9 @@ local seo = client:Seo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `foundOn` | `string` | No |  |
-| `link` | `string` | No |  |
-| `statusCode` | `number` | No |  |
+| `foundOn` | `string` | No | Page where the broken link was found |
+| `link` | `string` | No | The broken link URL |
+| `statusCode` | `number` | No | HTTP status code returned |
 
 ### Operations
 
@@ -274,13 +274,13 @@ local seo_analysi = client:SeoAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headings` | `table` | No |  |
+| `headings` | `table` | No | Heading tags analysis |
 | `images` | `table` | No |  |
-| `metaDescription` | `string` | No |  |
-| `score` | `number` | No |  |
-| `timestamp` | `string` | No |  |
-| `title` | `string` | No |  |
-| `url` | `string` | No |  |
+| `metaDescription` | `string` | No | Meta description |
+| `score` | `number` | No | Overall SEO score |
+| `timestamp` | `string` | No | Timestamp of the audit |
+| `title` | `string` | No | Page title |
+| `url` | `string` | No | The audited URL |
 
 ### Operations
 
@@ -332,13 +332,13 @@ local ssl = client:Ssl(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daysRemaining` | `number` | No |  |
-| `issuer` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
-| `valid` | `boolean` | No |  |
-| `validFrom` | `string` | No |  |
-| `validTo` | `string` | No |  |
+| `daysRemaining` | `number` | No | Days remaining until expiry |
+| `issuer` | `string` | No | Certificate issuer |
+| `timestamp` | `string` | No | Timestamp of the check |
+| `url` | `string` | No | The analyzed URL |
+| `valid` | `boolean` | No | Whether the SSL certificate is valid |
+| `validFrom` | `string` | No | Certificate valid from date |
+| `validTo` | `string` | No | Certificate expiry date |
 
 ### Operations
 
@@ -390,9 +390,9 @@ local tech_stack = client:TechStack(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `name` | `string` | No |  |
-| `version` | `string` | No |  |
+| `category` | `string` | No | Technology category |
+| `name` | `string` | No | Technology name |
+| `version` | `string` | No | Detected version |
 
 ### Operations
 

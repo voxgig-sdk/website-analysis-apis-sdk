@@ -1,0 +1,92 @@
+# Entity: ssl
+
+main: kit: entity: ssl: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "daysRemaining"
+      req: false
+      short: "Days remaining until expiry"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "issuer"
+      req: false
+      short: "Certificate issuer"
+      type: "`$STRING`"
+    }
+    {
+      name: "timestamp"
+      req: false
+      short: "Timestamp of the check"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "The analyzed URL"
+      type: "`$STRING`"
+    }
+    {
+      name: "valid"
+      req: false
+      short: "Whether the SSL certificate is valid"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "validFrom"
+      req: false
+      short: "Certificate valid from date"
+      type: "`$STRING`"
+    }
+    {
+      name: "validTo"
+      req: false
+      short: "Certificate expiry date"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "ssl"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "https://example.com"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/ssl"
+          parts: [
+            "api"
+            "ssl"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,68 @@
+# Entity: seo
+
+main: kit: entity: seo: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "foundOn"
+      req: false
+      short: "Page where the broken link was found"
+      type: "`$STRING`"
+    }
+    {
+      name: "link"
+      req: false
+      short: "The broken link URL"
+      type: "`$STRING`"
+    }
+    {
+      name: "statusCode"
+      req: false
+      short: "HTTP status code returned"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "seo"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "https://example.com"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/seo"
+          parts: [
+            "api"
+            "seo"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.brokenLinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

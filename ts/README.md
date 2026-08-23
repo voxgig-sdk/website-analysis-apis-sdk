@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -293,11 +293,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `loadTime` |  |
-| `pageSize` |  |
-| `requests` |  |
-| `timestamp` |  |
-| `url` |  |
+| `loadTime` | Page load time in milliseconds |
+| `pageSize` | Total page size in bytes |
+| `requests` | Number of HTTP requests |
+| `timestamp` | Timestamp of the analysis |
+| `url` | The analyzed URL |
 
 Operations: load.
 
@@ -307,9 +307,9 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshotUrl` |  |
-| `timestamp` |  |
-| `url` |  |
+| `screenshotUrl` | URL to the captured screenshot |
+| `timestamp` | Timestamp of the capture |
+| `url` | The captured URL |
 
 Operations: load.
 
@@ -319,9 +319,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `foundOn` |  |
-| `link` |  |
-| `statusCode` |  |
+| `foundOn` | Page where the broken link was found |
+| `link` | The broken link URL |
+| `statusCode` | HTTP status code returned |
 
 Operations: list.
 
@@ -331,13 +331,13 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `headings` |  |
+| `headings` | Heading tags analysis |
 | `images` |  |
-| `metaDescription` |  |
-| `score` |  |
-| `timestamp` |  |
-| `title` |  |
-| `url` |  |
+| `metaDescription` | Meta description |
+| `score` | Overall SEO score |
+| `timestamp` | Timestamp of the audit |
+| `title` | Page title |
+| `url` | The audited URL |
 
 Operations: load.
 
@@ -347,13 +347,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `daysRemaining` |  |
-| `issuer` |  |
-| `timestamp` |  |
-| `url` |  |
-| `valid` |  |
-| `validFrom` |  |
-| `validTo` |  |
+| `daysRemaining` | Days remaining until expiry |
+| `issuer` | Certificate issuer |
+| `timestamp` | Timestamp of the check |
+| `url` | The analyzed URL |
+| `valid` | Whether the SSL certificate is valid |
+| `validFrom` | Certificate valid from date |
+| `validTo` | Certificate expiry date |
 
 Operations: load.
 
@@ -363,9 +363,9 @@ API path: `/api/ssl`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Technology category |
+| `name` | Technology name |
+| `version` | Detected version |
 
 Operations: list.
 
@@ -390,11 +390,11 @@ Create an instance: `const performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `number` |  |
-| `pageSize` | `number` |  |
-| `requests` | `number` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `loadTime` | `number` | Page load time in milliseconds |
+| `pageSize` | `number` | Total page size in bytes |
+| `requests` | `number` | Number of HTTP requests |
+| `timestamp` | `string` | Timestamp of the analysis |
+| `url` | `string` | The analyzed URL |
 
 #### Example: Load
 
@@ -417,9 +417,9 @@ Create an instance: `const screenshot = client.Screenshot()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshotUrl` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
+| `screenshotUrl` | `string` | URL to the captured screenshot |
+| `timestamp` | `string` | Timestamp of the capture |
+| `url` | `string` | The captured URL |
 
 #### Example: Load
 
@@ -442,9 +442,9 @@ Create an instance: `const seo = client.Seo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `foundOn` | `string` |  |
-| `link` | `string` |  |
-| `statusCode` | `number` |  |
+| `foundOn` | `string` | Page where the broken link was found |
+| `link` | `string` | The broken link URL |
+| `statusCode` | `number` | HTTP status code returned |
 
 #### Example: List
 
@@ -467,13 +467,13 @@ Create an instance: `const seo_analysi = client.SeoAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headings` | `Record<string, any>` |  |
+| `headings` | `Record<string, any>` | Heading tags analysis |
 | `images` | `Record<string, any>` |  |
-| `metaDescription` | `string` |  |
-| `score` | `number` |  |
-| `timestamp` | `string` |  |
-| `title` | `string` |  |
-| `url` | `string` |  |
+| `metaDescription` | `string` | Meta description |
+| `score` | `number` | Overall SEO score |
+| `timestamp` | `string` | Timestamp of the audit |
+| `title` | `string` | Page title |
+| `url` | `string` | The audited URL |
 
 #### Example: Load
 
@@ -496,13 +496,13 @@ Create an instance: `const ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `daysRemaining` | `number` |  |
-| `issuer` | `string` |  |
-| `timestamp` | `string` |  |
-| `url` | `string` |  |
-| `valid` | `boolean` |  |
-| `validFrom` | `string` |  |
-| `validTo` | `string` |  |
+| `daysRemaining` | `number` | Days remaining until expiry |
+| `issuer` | `string` | Certificate issuer |
+| `timestamp` | `string` | Timestamp of the check |
+| `url` | `string` | The analyzed URL |
+| `valid` | `boolean` | Whether the SSL certificate is valid |
+| `validFrom` | `string` | Certificate valid from date |
+| `validTo` | `string` | Certificate expiry date |
 
 #### Example: Load
 
@@ -525,9 +525,9 @@ Create an instance: `const tech_stack = client.TechStack()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `name` | `string` |  |
-| `version` | `string` |  |
+| `category` | `string` | Technology category |
+| `name` | `string` | Technology name |
+| `version` | `string` | Detected version |
 
 #### Example: List
 

@@ -113,11 +113,11 @@ performance = client.Performance
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `Float` | No |  |
-| `pageSize` | `Integer` | No |  |
-| `requests` | `Integer` | No |  |
-| `timestamp` | `String` | No |  |
-| `url` | `String` | No |  |
+| `loadTime` | `Float` | No | Page load time in milliseconds |
+| `pageSize` | `Integer` | No | Total page size in bytes |
+| `requests` | `Integer` | No | Number of HTTP requests |
+| `timestamp` | `String` | No | Timestamp of the analysis |
+| `url` | `String` | No | The analyzed URL |
 
 ### Operations
 
@@ -169,9 +169,9 @@ screenshot = client.Screenshot
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshotUrl` | `String` | No |  |
-| `timestamp` | `String` | No |  |
-| `url` | `String` | No |  |
+| `screenshotUrl` | `String` | No | URL to the captured screenshot |
+| `timestamp` | `String` | No | Timestamp of the capture |
+| `url` | `String` | No | The captured URL |
 
 ### Operations
 
@@ -223,9 +223,9 @@ seo = client.Seo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `foundOn` | `String` | No |  |
-| `link` | `String` | No |  |
-| `statusCode` | `Integer` | No |  |
+| `foundOn` | `String` | No | Page where the broken link was found |
+| `link` | `String` | No | The broken link URL |
+| `statusCode` | `Integer` | No | HTTP status code returned |
 
 ### Operations
 
@@ -277,13 +277,13 @@ seo_analysi = client.SeoAnalysi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headings` | `Hash` | No |  |
+| `headings` | `Hash` | No | Heading tags analysis |
 | `images` | `Hash` | No |  |
-| `metaDescription` | `String` | No |  |
-| `score` | `Float` | No |  |
-| `timestamp` | `String` | No |  |
-| `title` | `String` | No |  |
-| `url` | `String` | No |  |
+| `metaDescription` | `String` | No | Meta description |
+| `score` | `Float` | No | Overall SEO score |
+| `timestamp` | `String` | No | Timestamp of the audit |
+| `title` | `String` | No | Page title |
+| `url` | `String` | No | The audited URL |
 
 ### Operations
 
@@ -335,13 +335,13 @@ ssl = client.Ssl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daysRemaining` | `Integer` | No |  |
-| `issuer` | `String` | No |  |
-| `timestamp` | `String` | No |  |
-| `url` | `String` | No |  |
-| `valid` | `Boolean` | No |  |
-| `validFrom` | `String` | No |  |
-| `validTo` | `String` | No |  |
+| `daysRemaining` | `Integer` | No | Days remaining until expiry |
+| `issuer` | `String` | No | Certificate issuer |
+| `timestamp` | `String` | No | Timestamp of the check |
+| `url` | `String` | No | The analyzed URL |
+| `valid` | `Boolean` | No | Whether the SSL certificate is valid |
+| `validFrom` | `String` | No | Certificate valid from date |
+| `validTo` | `String` | No | Certificate expiry date |
 
 ### Operations
 
@@ -393,9 +393,9 @@ tech_stack = client.TechStack
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | No |  |
-| `name` | `String` | No |  |
-| `version` | `String` | No |  |
+| `category` | `String` | No | Technology category |
+| `name` | `String` | No | Technology name |
+| `version` | `String` | No | Detected version |
 
 ### Operations
 

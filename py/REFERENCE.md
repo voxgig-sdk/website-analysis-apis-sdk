@@ -107,11 +107,11 @@ performance = client.Performance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `float` | No |  |
-| `pageSize` | `int` | No |  |
-| `requests` | `int` | No |  |
-| `timestamp` | `str` | No |  |
-| `url` | `str` | No |  |
+| `loadTime` | `float` | No | Page load time in milliseconds |
+| `pageSize` | `int` | No | Total page size in bytes |
+| `requests` | `int` | No | Number of HTTP requests |
+| `timestamp` | `str` | No | Timestamp of the analysis |
+| `url` | `str` | No | The analyzed URL |
 
 ### Operations
 
@@ -162,9 +162,9 @@ screenshot = client.Screenshot()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshotUrl` | `str` | No |  |
-| `timestamp` | `str` | No |  |
-| `url` | `str` | No |  |
+| `screenshotUrl` | `str` | No | URL to the captured screenshot |
+| `timestamp` | `str` | No | Timestamp of the capture |
+| `url` | `str` | No | The captured URL |
 
 ### Operations
 
@@ -215,9 +215,9 @@ seo = client.Seo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `foundOn` | `str` | No |  |
-| `link` | `str` | No |  |
-| `statusCode` | `int` | No |  |
+| `foundOn` | `str` | No | Page where the broken link was found |
+| `link` | `str` | No | The broken link URL |
+| `statusCode` | `int` | No | HTTP status code returned |
 
 ### Operations
 
@@ -270,13 +270,13 @@ seo_analysi = client.SeoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headings` | `dict` | No |  |
+| `headings` | `dict` | No | Heading tags analysis |
 | `images` | `dict` | No |  |
-| `metaDescription` | `str` | No |  |
-| `score` | `float` | No |  |
-| `timestamp` | `str` | No |  |
-| `title` | `str` | No |  |
-| `url` | `str` | No |  |
+| `metaDescription` | `str` | No | Meta description |
+| `score` | `float` | No | Overall SEO score |
+| `timestamp` | `str` | No | Timestamp of the audit |
+| `title` | `str` | No | Page title |
+| `url` | `str` | No | The audited URL |
 
 ### Operations
 
@@ -327,13 +327,13 @@ ssl = client.Ssl()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daysRemaining` | `int` | No |  |
-| `issuer` | `str` | No |  |
-| `timestamp` | `str` | No |  |
-| `url` | `str` | No |  |
-| `valid` | `bool` | No |  |
-| `validFrom` | `str` | No |  |
-| `validTo` | `str` | No |  |
+| `daysRemaining` | `int` | No | Days remaining until expiry |
+| `issuer` | `str` | No | Certificate issuer |
+| `timestamp` | `str` | No | Timestamp of the check |
+| `url` | `str` | No | The analyzed URL |
+| `valid` | `bool` | No | Whether the SSL certificate is valid |
+| `validFrom` | `str` | No | Certificate valid from date |
+| `validTo` | `str` | No | Certificate expiry date |
 
 ### Operations
 
@@ -384,9 +384,9 @@ tech_stack = client.TechStack()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | No |  |
-| `name` | `str` | No |  |
-| `version` | `str` | No |  |
+| `category` | `str` | No | Technology category |
+| `name` | `str` | No | Technology name |
+| `version` | `str` | No | Detected version |
 
 ### Operations
 

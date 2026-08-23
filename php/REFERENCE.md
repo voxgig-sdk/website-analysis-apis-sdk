@@ -112,11 +112,11 @@ $performance = $client->Performance();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `float` | No |  |
-| `pageSize` | `int` | No |  |
-| `requests` | `int` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `loadTime` | `float` | No | Page load time in milliseconds |
+| `pageSize` | `int` | No | Total page size in bytes |
+| `requests` | `int` | No | Number of HTTP requests |
+| `timestamp` | `string` | No | Timestamp of the analysis |
+| `url` | `string` | No | The analyzed URL |
 
 ### Operations
 
@@ -168,9 +168,9 @@ $screenshot = $client->Screenshot();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshotUrl` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
+| `screenshotUrl` | `string` | No | URL to the captured screenshot |
+| `timestamp` | `string` | No | Timestamp of the capture |
+| `url` | `string` | No | The captured URL |
 
 ### Operations
 
@@ -222,9 +222,9 @@ $seo = $client->Seo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `foundOn` | `string` | No |  |
-| `link` | `string` | No |  |
-| `statusCode` | `int` | No |  |
+| `foundOn` | `string` | No | Page where the broken link was found |
+| `link` | `string` | No | The broken link URL |
+| `statusCode` | `int` | No | HTTP status code returned |
 
 ### Operations
 
@@ -276,13 +276,13 @@ $seo_analysi = $client->SeoAnalysi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `headings` | `array` | No |  |
+| `headings` | `array` | No | Heading tags analysis |
 | `images` | `array` | No |  |
-| `metaDescription` | `string` | No |  |
-| `score` | `float` | No |  |
-| `timestamp` | `string` | No |  |
-| `title` | `string` | No |  |
-| `url` | `string` | No |  |
+| `metaDescription` | `string` | No | Meta description |
+| `score` | `float` | No | Overall SEO score |
+| `timestamp` | `string` | No | Timestamp of the audit |
+| `title` | `string` | No | Page title |
+| `url` | `string` | No | The audited URL |
 
 ### Operations
 
@@ -334,13 +334,13 @@ $ssl = $client->Ssl();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daysRemaining` | `int` | No |  |
-| `issuer` | `string` | No |  |
-| `timestamp` | `string` | No |  |
-| `url` | `string` | No |  |
-| `valid` | `bool` | No |  |
-| `validFrom` | `string` | No |  |
-| `validTo` | `string` | No |  |
+| `daysRemaining` | `int` | No | Days remaining until expiry |
+| `issuer` | `string` | No | Certificate issuer |
+| `timestamp` | `string` | No | Timestamp of the check |
+| `url` | `string` | No | The analyzed URL |
+| `valid` | `bool` | No | Whether the SSL certificate is valid |
+| `validFrom` | `string` | No | Certificate valid from date |
+| `validTo` | `string` | No | Certificate expiry date |
 
 ### Operations
 
@@ -392,9 +392,9 @@ $tech_stack = $client->TechStack();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `name` | `string` | No |  |
-| `version` | `string` | No |  |
+| `category` | `string` | No | Technology category |
+| `name` | `string` | No | Technology name |
+| `version` | `string` | No | Detected version |
 
 ### Operations
 

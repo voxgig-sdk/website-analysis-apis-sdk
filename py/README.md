@@ -247,11 +247,11 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `loadTime` |  |
-| `pageSize` |  |
-| `requests` |  |
-| `timestamp` |  |
-| `url` |  |
+| `loadTime` | Page load time in milliseconds |
+| `pageSize` | Total page size in bytes |
+| `requests` | Number of HTTP requests |
+| `timestamp` | Timestamp of the analysis |
+| `url` | The analyzed URL |
 
 Operations: Load.
 
@@ -261,9 +261,9 @@ API path: `/api/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshotUrl` |  |
-| `timestamp` |  |
-| `url` |  |
+| `screenshotUrl` | URL to the captured screenshot |
+| `timestamp` | Timestamp of the capture |
+| `url` | The captured URL |
 
 Operations: Load.
 
@@ -273,9 +273,9 @@ API path: `/api/screenshot`
 
 | Field | Description |
 | --- | --- |
-| `foundOn` |  |
-| `link` |  |
-| `statusCode` |  |
+| `foundOn` | Page where the broken link was found |
+| `link` | The broken link URL |
+| `statusCode` | HTTP status code returned |
 
 Operations: List.
 
@@ -285,13 +285,13 @@ API path: `/api/seo`
 
 | Field | Description |
 | --- | --- |
-| `headings` |  |
+| `headings` | Heading tags analysis |
 | `images` |  |
-| `metaDescription` |  |
-| `score` |  |
-| `timestamp` |  |
-| `title` |  |
-| `url` |  |
+| `metaDescription` | Meta description |
+| `score` | Overall SEO score |
+| `timestamp` | Timestamp of the audit |
+| `title` | Page title |
+| `url` | The audited URL |
 
 Operations: Load.
 
@@ -301,13 +301,13 @@ API path: `/api/seo-audit`
 
 | Field | Description |
 | --- | --- |
-| `daysRemaining` |  |
-| `issuer` |  |
-| `timestamp` |  |
-| `url` |  |
-| `valid` |  |
-| `validFrom` |  |
-| `validTo` |  |
+| `daysRemaining` | Days remaining until expiry |
+| `issuer` | Certificate issuer |
+| `timestamp` | Timestamp of the check |
+| `url` | The analyzed URL |
+| `valid` | Whether the SSL certificate is valid |
+| `validFrom` | Certificate valid from date |
+| `validTo` | Certificate expiry date |
 
 Operations: Load.
 
@@ -317,9 +317,9 @@ API path: `/api/ssl`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `name` |  |
-| `version` |  |
+| `category` | Technology category |
+| `name` | Technology name |
+| `version` | Detected version |
 
 Operations: List.
 
@@ -344,11 +344,11 @@ Create an instance: `performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `float` |  |
-| `pageSize` | `int` |  |
-| `requests` | `int` |  |
-| `timestamp` | `str` |  |
-| `url` | `str` |  |
+| `loadTime` | `float` | Page load time in milliseconds |
+| `pageSize` | `int` | Total page size in bytes |
+| `requests` | `int` | Number of HTTP requests |
+| `timestamp` | `str` | Timestamp of the analysis |
+| `url` | `str` | The analyzed URL |
 
 #### Example: Load
 
@@ -371,9 +371,9 @@ Create an instance: `screenshot = client.Screenshot()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshotUrl` | `str` |  |
-| `timestamp` | `str` |  |
-| `url` | `str` |  |
+| `screenshotUrl` | `str` | URL to the captured screenshot |
+| `timestamp` | `str` | Timestamp of the capture |
+| `url` | `str` | The captured URL |
 
 #### Example: Load
 
@@ -396,9 +396,9 @@ Create an instance: `seo = client.Seo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `foundOn` | `str` |  |
-| `link` | `str` |  |
-| `statusCode` | `int` |  |
+| `foundOn` | `str` | Page where the broken link was found |
+| `link` | `str` | The broken link URL |
+| `statusCode` | `int` | HTTP status code returned |
 
 #### Example: List
 
@@ -421,13 +421,13 @@ Create an instance: `seo_analysi = client.SeoAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `headings` | `dict` |  |
+| `headings` | `dict` | Heading tags analysis |
 | `images` | `dict` |  |
-| `metaDescription` | `str` |  |
-| `score` | `float` |  |
-| `timestamp` | `str` |  |
-| `title` | `str` |  |
-| `url` | `str` |  |
+| `metaDescription` | `str` | Meta description |
+| `score` | `float` | Overall SEO score |
+| `timestamp` | `str` | Timestamp of the audit |
+| `title` | `str` | Page title |
+| `url` | `str` | The audited URL |
 
 #### Example: Load
 
@@ -450,13 +450,13 @@ Create an instance: `ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `daysRemaining` | `int` |  |
-| `issuer` | `str` |  |
-| `timestamp` | `str` |  |
-| `url` | `str` |  |
-| `valid` | `bool` |  |
-| `validFrom` | `str` |  |
-| `validTo` | `str` |  |
+| `daysRemaining` | `int` | Days remaining until expiry |
+| `issuer` | `str` | Certificate issuer |
+| `timestamp` | `str` | Timestamp of the check |
+| `url` | `str` | The analyzed URL |
+| `valid` | `bool` | Whether the SSL certificate is valid |
+| `validFrom` | `str` | Certificate valid from date |
+| `validTo` | `str` | Certificate expiry date |
 
 #### Example: Load
 
@@ -479,9 +479,9 @@ Create an instance: `tech_stack = client.TechStack()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `str` |  |
-| `name` | `str` |  |
-| `version` | `str` |  |
+| `category` | `str` | Technology category |
+| `name` | `str` | Technology name |
+| `version` | `str` | Detected version |
 
 #### Example: List
 
