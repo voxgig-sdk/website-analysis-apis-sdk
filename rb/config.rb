@@ -28,6 +28,7 @@ module WebsiteAnalysisApisConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
