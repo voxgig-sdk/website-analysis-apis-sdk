@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single performance — the value is the loaded record.
-    performance, err := client.Performance(nil).Load(nil, nil)
+    performance, err := client.Performance(nil).Load(map[string]any{"url": "example_url"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-screenshot, err := client.Screenshot(nil).Load(nil, nil)
+screenshot, err := client.Screenshot(nil).Load(map[string]any{"url": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 screenshot, err := client.Screenshot(nil).Load(
-    nil, nil,
+    map[string]any{"url": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -371,7 +371,7 @@ Create an instance: `performance := client.Performance(nil)`
 #### Example: Load
 
 ```go
-performance, err := client.Performance(nil).Load(nil, nil)
+performance, err := client.Performance(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -400,7 +400,7 @@ Create an instance: `screenshot := client.Screenshot(nil)`
 #### Example: Load
 
 ```go
-screenshot, err := client.Screenshot(nil).Load(nil, nil)
+screenshot, err := client.Screenshot(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -462,7 +462,7 @@ Create an instance: `seoAnalysi := client.SeoAnalysi(nil)`
 #### Example: Load
 
 ```go
-seoAnalysi, err := client.SeoAnalysi(nil).Load(nil, nil)
+seoAnalysi, err := client.SeoAnalysi(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -495,7 +495,7 @@ Create an instance: `ssl := client.Ssl(nil)`
 #### Example: Load
 
 ```go
-ssl, err := client.Ssl(nil).Load(nil, nil)
+ssl, err := client.Ssl(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -530,6 +530,29 @@ if err != nil {
 }
 fmt.Println(techStacks) // the array of records
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -606,7 +629,7 @@ stores the returned data and match criteria internally.
 
 ```go
 screenshot := client.Screenshot(nil)
-screenshot.Load(nil, nil)
+screenshot.Load(map[string]any{"url": "example"}, nil)
 
 // screenshot.Data() now returns the screenshot data from the last load
 // screenshot.Match() returns the last match criteria

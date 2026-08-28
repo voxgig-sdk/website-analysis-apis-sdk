@@ -189,7 +189,7 @@ const performance = client.Performance()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Performance().load()
+const result = await client.Performance().load({ url: 'url' })
 ```
 
 ### Common Methods
@@ -241,7 +241,7 @@ const screenshot = client.Screenshot()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Screenshot().load()
+const result = await client.Screenshot().load({ url: 'url' })
 ```
 
 ### Common Methods
@@ -293,7 +293,7 @@ const seo = client.Seo()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Seo().list()
+const results = await client.Seo().list({ url: "example" })
 ```
 
 ### Common Methods
@@ -349,7 +349,7 @@ const seo_analysi = client.SeoAnalysi()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SeoAnalysi().load()
+const result = await client.SeoAnalysi().load({ url: 'url' })
 ```
 
 ### Common Methods
@@ -405,7 +405,7 @@ const ssl = client.Ssl()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Ssl().load()
+const result = await client.Ssl().load({ url: 'url' })
 ```
 
 ### Common Methods
@@ -457,7 +457,7 @@ const tech_stack = client.TechStack()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.TechStack().list()
+const results = await client.TechStack().list({ url: "example" })
 ```
 
 ### Common Methods
@@ -504,4 +504,42 @@ const client = new WebsiteAnalysisApisSDK({
   }
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

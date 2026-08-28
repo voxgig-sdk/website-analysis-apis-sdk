@@ -35,7 +35,7 @@ client = WebsiteAnalysisApisSDK.new
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Performance record (raises on error).
-  performance = client.Performance.load()
+  performance = client.Performance.load({ "url" => "example_url" })
   puts performance
 rescue => err
   warn "load failed: #{err}"
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  screenshot = client.Screenshot.load()
+  screenshot = client.Screenshot.load({ "url" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,7 +119,7 @@ client = WebsiteAnalysisApisSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-screenshot = client.Screenshot.load()
+screenshot = client.Screenshot.load({ "url" => "example" })
 puts screenshot
 ```
 
@@ -348,7 +348,7 @@ Create an instance: `performance = client.Performance`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Performance record (raises on error).
-performance = client.Performance.load()
+performance = client.Performance.load({ "url" => "url" })
 ```
 
 
@@ -374,7 +374,7 @@ Create an instance: `screenshot = client.Screenshot`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Screenshot record (raises on error).
-screenshot = client.Screenshot.load()
+screenshot = client.Screenshot.load({ "url" => "url" })
 ```
 
 
@@ -430,7 +430,7 @@ Create an instance: `seo_analysi = client.SeoAnalysi`
 
 ```ruby
 # load returns the ENTITY — call data_get for the SeoAnalysi record (raises on error).
-seo_analysi = client.SeoAnalysi.load()
+seo_analysi = client.SeoAnalysi.load({ "url" => "url" })
 ```
 
 
@@ -460,7 +460,7 @@ Create an instance: `ssl = client.Ssl`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Ssl record (raises on error).
-ssl = client.Ssl.load()
+ssl = client.Ssl.load({ "url" => "url" })
 ```
 
 
@@ -488,6 +488,29 @@ Create an instance: `tech_stack = client.TechStack`
 # list returns an Array of TechStack records (raises on error).
 tech_stacks = client.TechStack.list
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -567,7 +590,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 screenshot = client.Screenshot
-screenshot.load()
+screenshot.load({ "url" => "example" })
 
 # screenshot.data_get now returns the screenshot data from the last load
 # screenshot.match_get returns the last match criteria

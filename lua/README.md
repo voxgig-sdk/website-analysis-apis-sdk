@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a performance
 
 ```lua
-local performance, err = client:Performance():load()
+local performance, err = client:Performance():load({ url = "example_url" })
 if err then error(err) end
 print(performance)
 ```
@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local screenshot, err = client:Screenshot():load()
+local screenshot, err = client:Screenshot():load({ url = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Screenshot():load()
+local result, err = client:Screenshot():load({ url = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -338,7 +338,7 @@ Create an instance: `local performance = client:Performance(nil)`
 #### Example: Load
 
 ```lua
-local performance, err = client:Performance():load()
+local performance, err = client:Performance():load({ url = "url" })
 ```
 
 
@@ -363,7 +363,7 @@ Create an instance: `local screenshot = client:Screenshot(nil)`
 #### Example: Load
 
 ```lua
-local screenshot, err = client:Screenshot():load()
+local screenshot, err = client:Screenshot():load({ url = "url" })
 ```
 
 
@@ -417,7 +417,7 @@ Create an instance: `local seo_analysi = client:SeoAnalysi(nil)`
 #### Example: Load
 
 ```lua
-local seo_analysi, err = client:SeoAnalysi():load()
+local seo_analysi, err = client:SeoAnalysi():load({ url = "url" })
 ```
 
 
@@ -446,7 +446,7 @@ Create an instance: `local ssl = client:Ssl(nil)`
 #### Example: Load
 
 ```lua
-local ssl, err = client:Ssl():load()
+local ssl, err = client:Ssl():load({ url = "url" })
 ```
 
 
@@ -473,6 +473,29 @@ Create an instance: `local tech_stack = client:TechStack(nil)`
 ```lua
 local tech_stacks, err = client:TechStack():list()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -552,7 +575,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local screenshot = client:Screenshot()
-screenshot:load()
+screenshot:load({ url = "example" })
 
 -- screenshot:data_get() now returns the screenshot data from the last load
 -- screenshot:match_get() returns the last match criteria

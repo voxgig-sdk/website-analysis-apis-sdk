@@ -24,11 +24,7 @@ class Performance(TypedDict, total=False):
     url: str
 
 
-class PerformanceLoadMatch(TypedDict, total=False):
-    loadTime: float
-    pageSize: int
-    requests: int
-    timestamp: str
+class PerformanceLoadMatch(TypedDict):
     url: str
 
 
@@ -38,9 +34,7 @@ class Screenshot(TypedDict, total=False):
     url: str
 
 
-class ScreenshotLoadMatch(TypedDict, total=False):
-    screenshotUrl: str
-    timestamp: str
+class ScreenshotLoadMatch(TypedDict):
     url: str
 
 
@@ -50,10 +44,8 @@ class Seo(TypedDict, total=False):
     statusCode: int
 
 
-class SeoListMatch(TypedDict, total=False):
-    foundOn: str
-    link: str
-    statusCode: int
+class SeoListMatch(TypedDict):
+    url: str
 
 
 class SeoAnalysi(TypedDict, total=False):
@@ -66,13 +58,7 @@ class SeoAnalysi(TypedDict, total=False):
     url: str
 
 
-class SeoAnalysiLoadMatch(TypedDict, total=False):
-    headings: dict
-    images: dict
-    metaDescription: str
-    score: float
-    timestamp: str
-    title: str
+class SeoAnalysiLoadMatch(TypedDict):
     url: str
 
 
@@ -86,14 +72,8 @@ class Ssl(TypedDict, total=False):
     validTo: str
 
 
-class SslLoadMatch(TypedDict, total=False):
-    daysRemaining: int
-    issuer: str
-    timestamp: str
+class SslLoadMatch(TypedDict):
     url: str
-    valid: bool
-    validFrom: str
-    validTo: str
 
 
 class TechStack(TypedDict, total=False):
@@ -102,7 +82,5 @@ class TechStack(TypedDict, total=False):
     version: str
 
 
-class TechStackListMatch(TypedDict, total=False):
-    category: str
-    name: str
-    version: str
+class TechStackListMatch(TypedDict):
+    url: str

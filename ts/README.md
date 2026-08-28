@@ -39,7 +39,7 @@ const client = new WebsiteAnalysisApisSDK()
 
 ```ts
 try {
-  const performance = await client.Performance().load()
+  const performance = await client.Performance().load({ url: 'example_url' })
   console.log(performance)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const screenshot = await client.Screenshot().load()
+  const screenshot = await client.Screenshot().load({ url: "example" })
   console.log(screenshot)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WebsiteAnalysisApisSDK.test()
 
-const screenshot = await client.Screenshot().load()
+const screenshot = await client.Screenshot().load({ url: 'example_url' })
 // screenshot is the entity, populated with mock response data
 // — call screenshot.data() for the record itself
 console.log(screenshot)
@@ -141,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.Screenshot()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ url: 'example_url' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -399,7 +399,7 @@ Create an instance: `const performance = client.Performance()`
 #### Example: Load
 
 ```ts
-const performance = await client.Performance().load()
+const performance = await client.Performance().load({ url: 'url' })
 ```
 
 
@@ -424,7 +424,7 @@ Create an instance: `const screenshot = client.Screenshot()`
 #### Example: Load
 
 ```ts
-const screenshot = await client.Screenshot().load()
+const screenshot = await client.Screenshot().load({ url: 'url' })
 ```
 
 
@@ -449,7 +449,7 @@ Create an instance: `const seo = client.Seo()`
 #### Example: List
 
 ```ts
-const seos = await client.Seo().list()
+const seos = await client.Seo().list({ url: "example" })
 ```
 
 
@@ -478,7 +478,7 @@ Create an instance: `const seo_analysi = client.SeoAnalysi()`
 #### Example: Load
 
 ```ts
-const seo_analysi = await client.SeoAnalysi().load()
+const seo_analysi = await client.SeoAnalysi().load({ url: 'url' })
 ```
 
 
@@ -507,7 +507,7 @@ Create an instance: `const ssl = client.Ssl()`
 #### Example: Load
 
 ```ts
-const ssl = await client.Ssl().load()
+const ssl = await client.Ssl().load({ url: 'url' })
 ```
 
 
@@ -532,8 +532,31 @@ Create an instance: `const tech_stack = client.TechStack()`
 #### Example: List
 
 ```ts
-const tech_stacks = await client.TechStack().list()
+const tech_stacks = await client.TechStack().list({ url: "example" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -606,7 +629,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const screenshot = client.Screenshot()
-await screenshot.load()
+await screenshot.load({ url: "example" })
 
 // screenshot.data() now returns the screenshot data from the last `load`
 // screenshot.match() returns the last match criteria

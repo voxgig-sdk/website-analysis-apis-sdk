@@ -14,11 +14,7 @@ export interface Performance {
 }
 
 export interface PerformanceLoadMatch {
-  loadTime?: number
-  pageSize?: number
-  requests?: number
-  timestamp?: string
-  url?: string
+  url: string
 }
 
 export interface Screenshot {
@@ -28,9 +24,7 @@ export interface Screenshot {
 }
 
 export interface ScreenshotLoadMatch {
-  screenshotUrl?: string
-  timestamp?: string
-  url?: string
+  url: string
 }
 
 export interface Seo {
@@ -40,9 +34,7 @@ export interface Seo {
 }
 
 export interface SeoListMatch {
-  foundOn?: string
-  link?: string
-  statusCode?: number
+  url: string
 }
 
 export interface SeoAnalysi {
@@ -56,13 +48,7 @@ export interface SeoAnalysi {
 }
 
 export interface SeoAnalysiLoadMatch {
-  headings?: Record<string, any>
-  images?: Record<string, any>
-  metaDescription?: string
-  score?: number
-  timestamp?: string
-  title?: string
-  url?: string
+  url: string
 }
 
 export interface Ssl {
@@ -76,13 +62,7 @@ export interface Ssl {
 }
 
 export interface SslLoadMatch {
-  daysRemaining?: number
-  issuer?: string
-  timestamp?: string
-  url?: string
-  valid?: boolean
-  validFrom?: string
-  validTo?: string
+  url: string
 }
 
 export interface TechStack {
@@ -92,8 +72,6 @@ export interface TechStack {
 }
 
 export interface TechStackListMatch {
-  category?: string
-  name?: string
-  version?: string
+  url: string
 }
 

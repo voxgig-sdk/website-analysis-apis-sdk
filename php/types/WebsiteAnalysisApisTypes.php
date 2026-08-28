@@ -25,11 +25,7 @@ class Performance
 /** Request payload for Performance#load. */
 class PerformanceLoadMatch
 {
-    public ?float $loadTime = null;
-    public ?int $pageSize = null;
-    public ?int $requests = null;
-    public ?string $timestamp = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Screenshot entity data model. */
@@ -43,9 +39,7 @@ class Screenshot
 /** Request payload for Screenshot#load. */
 class ScreenshotLoadMatch
 {
-    public ?string $screenshotUrl = null;
-    public ?string $timestamp = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Seo entity data model. */
@@ -59,9 +53,7 @@ class Seo
 /** Request payload for Seo#list. */
 class SeoListMatch
 {
-    public ?string $foundOn = null;
-    public ?string $link = null;
-    public ?int $statusCode = null;
+    public string $url;
 }
 
 /** SeoAnalysi entity data model. */
@@ -79,13 +71,7 @@ class SeoAnalysi
 /** Request payload for SeoAnalysi#load. */
 class SeoAnalysiLoadMatch
 {
-    public ?array $headings = null;
-    public ?array $images = null;
-    public ?string $metaDescription = null;
-    public ?float $score = null;
-    public ?string $timestamp = null;
-    public ?string $title = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Ssl entity data model. */
@@ -103,13 +89,7 @@ class Ssl
 /** Request payload for Ssl#load. */
 class SslLoadMatch
 {
-    public ?int $daysRemaining = null;
-    public ?string $issuer = null;
-    public ?string $timestamp = null;
-    public ?string $url = null;
-    public ?bool $valid = null;
-    public ?string $validFrom = null;
-    public ?string $validTo = null;
+    public string $url;
 }
 
 /** TechStack entity data model. */
@@ -123,8 +103,6 @@ class TechStack
 /** Request payload for TechStack#list. */
 class TechStackListMatch
 {
-    public ?string $category = null;
-    public ?string $name = null;
-    public ?string $version = null;
+    public string $url;
 }
 

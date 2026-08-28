@@ -42,7 +42,7 @@ client = WebsiteAnalysisApisSDK()
 
 ```python
 try:
-    performance = client.Performance().load()
+    performance = client.Performance().load({"url": "example_url"})
     print(performance)
 except Exception as err:
     print(f"load failed: {err}")
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    screenshot = client.Screenshot().load()
+    screenshot = client.Screenshot().load({"url": "example"})
     print(screenshot)
 except Exception as err:
     print(f"load failed: {err}")
@@ -124,7 +124,7 @@ client = WebsiteAnalysisApisSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-screenshot = client.Screenshot().load()
+screenshot = client.Screenshot().load({"url": "example"})
 # screenshot contains the mock response record
 ```
 
@@ -353,7 +353,7 @@ Create an instance: `performance = client.Performance()`
 #### Example: Load
 
 ```python
-performance = client.Performance().load()
+performance = client.Performance().load({"url": "url"})
 ```
 
 
@@ -378,7 +378,7 @@ Create an instance: `screenshot = client.Screenshot()`
 #### Example: Load
 
 ```python
-screenshot = client.Screenshot().load()
+screenshot = client.Screenshot().load({"url": "url"})
 ```
 
 
@@ -403,7 +403,7 @@ Create an instance: `seo = client.Seo()`
 #### Example: List
 
 ```python
-seos = client.Seo().list()
+seos = client.Seo().list({"url": "example"})
 ```
 
 
@@ -432,7 +432,7 @@ Create an instance: `seo_analysi = client.SeoAnalysi()`
 #### Example: Load
 
 ```python
-seo_analysi = client.SeoAnalysi().load()
+seo_analysi = client.SeoAnalysi().load({"url": "url"})
 ```
 
 
@@ -461,7 +461,7 @@ Create an instance: `ssl = client.Ssl()`
 #### Example: Load
 
 ```python
-ssl = client.Ssl().load()
+ssl = client.Ssl().load({"url": "url"})
 ```
 
 
@@ -486,8 +486,31 @@ Create an instance: `tech_stack = client.TechStack()`
 #### Example: List
 
 ```python
-tech_stacks = client.TechStack().list()
+tech_stacks = client.TechStack().list({"url": "example"})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -566,7 +589,7 @@ stores the returned data and match criteria internally.
 
 ```python
 screenshot = client.Screenshot()
-screenshot.load()
+screenshot.load({"url": "example"})
 
 # screenshot.data_get() now returns the screenshot data from the last load
 # screenshot.match_get() returns the last match criteria
