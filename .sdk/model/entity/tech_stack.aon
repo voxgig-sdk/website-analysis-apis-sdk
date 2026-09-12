@@ -45,9 +45,13 @@ main: kit: entity: tech_stack: {
           }
           method: "GET"
           orig: "/api/techstack"
-          parts: [
-            "api"
-            "techstack"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "techstack"
+            }
           ]
           select: {
             exist: [

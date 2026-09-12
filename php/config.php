@@ -78,6 +78,7 @@ class WebsiteAnalysisApisConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'Timestamp of the analysis',
               'type' => '`$STRING`',
@@ -110,9 +111,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/performance',
-                  'parts' => [
-                    'api',
-                    'performance',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'performance',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -122,6 +127,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'performance',
                   ],
                 ],
               ],
@@ -139,6 +148,7 @@ class WebsiteAnalysisApisConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'Timestamp of the capture',
               'type' => '`$STRING`',
@@ -171,9 +181,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/screenshot',
-                  'parts' => [
-                    'api',
-                    'screenshot',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'screenshot',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -183,6 +197,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'screenshot',
                   ],
                 ],
               ],
@@ -232,9 +250,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/seo',
-                  'parts' => [
-                    'api',
-                    'seo',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'seo',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -244,6 +266,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.brokenLinks`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'seo',
                   ],
                 ],
               ],
@@ -275,6 +301,7 @@ class WebsiteAnalysisApisConfig
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'Timestamp of the audit',
               'type' => '`$STRING`',
@@ -312,9 +339,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/seo-audit',
-                  'parts' => [
-                    'api',
-                    'seo-audit',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'seo-audit',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -324,6 +355,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'seo-audit',
                   ],
                 ],
               ],
@@ -346,6 +381,7 @@ class WebsiteAnalysisApisConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'Timestamp of the check',
               'type' => '`$STRING`',
@@ -361,11 +397,13 @@ class WebsiteAnalysisApisConfig
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'validFrom',
               'short' => 'Certificate valid from date',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'validTo',
               'short' => 'Certificate expiry date',
               'type' => '`$STRING`',
@@ -393,9 +431,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ssl',
-                  'parts' => [
-                    'api',
-                    'ssl',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ssl',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -405,6 +447,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ssl',
                   ],
                 ],
               ],
@@ -454,9 +500,13 @@ class WebsiteAnalysisApisConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/techstack',
-                  'parts' => [
-                    'api',
-                    'techstack',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'techstack',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -466,6 +516,10 @@ class WebsiteAnalysisApisConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.technologies`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'techstack',
                   ],
                 ],
               ],

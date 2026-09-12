@@ -55,6 +55,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "timestamp",
               "req": false,
               "short": "Timestamp of the analysis",
@@ -92,9 +93,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/performance",
-                  "parts": [
-                    "api",
-                    "performance"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "performance"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -128,6 +133,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "timestamp",
               "req": false,
               "short": "Timestamp of the capture",
@@ -165,9 +171,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/screenshot",
-                  "parts": [
-                    "api",
-                    "screenshot"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "screenshot"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -238,9 +248,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/seo",
-                  "parts": [
-                    "api",
-                    "seo"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "seo"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -294,6 +308,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "timestamp",
               "req": false,
               "short": "Timestamp of the audit",
@@ -338,9 +353,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/seo-audit",
-                  "parts": [
-                    "api",
-                    "seo-audit"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "seo-audit"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -381,6 +400,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "timestamp",
               "req": false,
               "short": "Timestamp of the check",
@@ -402,6 +422,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "validFrom",
               "req": false,
               "short": "Certificate valid from date",
@@ -409,6 +430,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "validTo",
               "req": false,
               "short": "Certificate expiry date",
@@ -439,9 +461,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ssl",
-                  "parts": [
-                    "api",
-                    "ssl"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ssl"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -512,9 +538,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/techstack",
-                  "parts": [
-                    "api",
-                    "techstack"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "techstack"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -598,8 +628,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -863,6 +896,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -888,6 +924,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -939,6 +979,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -963,6 +1004,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1014,6 +1056,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1038,6 +1081,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1078,6 +1122,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1103,6 +1150,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1137,6 +1187,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1162,6 +1215,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1202,6 +1258,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1227,6 +1286,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1272,6 +1334,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1297,6 +1362,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1314,11 +1382,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1347,6 +1410,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1371,6 +1437,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

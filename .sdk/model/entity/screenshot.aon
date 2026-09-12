@@ -12,6 +12,7 @@ main: kit: entity: screenshot: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       short: "Timestamp of the capture"
@@ -45,9 +46,13 @@ main: kit: entity: screenshot: {
           }
           method: "GET"
           orig: "/api/screenshot"
-          parts: [
-            "api"
-            "screenshot"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "screenshot"
+            }
           ]
           select: {
             exist: [

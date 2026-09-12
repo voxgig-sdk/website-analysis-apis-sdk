@@ -1,6 +1,14 @@
 # WebsiteAnalysisApis SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -73,6 +81,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "short": "Timestamp of the analysis",
             "type": "`$STRING`",
@@ -105,9 +114,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/performance",
-                "parts": [
-                  "api",
-                  "performance",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "performance",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -118,6 +131,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "performance",
+                ],
               },
             ],
           },
@@ -134,6 +151,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "short": "Timestamp of the capture",
             "type": "`$STRING`",
@@ -166,9 +184,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/screenshot",
-                "parts": [
-                  "api",
-                  "screenshot",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "screenshot",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -179,6 +201,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "screenshot",
+                ],
               },
             ],
           },
@@ -227,9 +253,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/seo",
-                "parts": [
-                  "api",
-                  "seo",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "seo",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -240,6 +270,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.brokenLinks`",
                 },
+                "parts": [
+                  "api",
+                  "seo",
+                ],
               },
             ],
           },
@@ -270,6 +304,7 @@ def make_config():
             "type": "`$NUMBER`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "short": "Timestamp of the audit",
             "type": "`$STRING`",
@@ -307,9 +342,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/seo-audit",
-                "parts": [
-                  "api",
-                  "seo-audit",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "seo-audit",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -320,6 +359,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "seo-audit",
+                ],
               },
             ],
           },
@@ -341,6 +384,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "short": "Timestamp of the check",
             "type": "`$STRING`",
@@ -356,11 +400,13 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "date-time",
             "name": "validFrom",
             "short": "Certificate valid from date",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "validTo",
             "short": "Certificate expiry date",
             "type": "`$STRING`",
@@ -388,9 +434,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ssl",
-                "parts": [
-                  "api",
-                  "ssl",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ssl",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -401,6 +451,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ssl",
+                ],
               },
             ],
           },
@@ -449,9 +503,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/techstack",
-                "parts": [
-                  "api",
-                  "techstack",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "techstack",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -462,6 +520,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.technologies`",
                 },
+                "parts": [
+                  "api",
+                  "techstack",
+                ],
               },
             ],
           },

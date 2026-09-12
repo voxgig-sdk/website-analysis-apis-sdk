@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -97,6 +108,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "short": "Timestamp of the analysis",
           "type": "`$STRING`"
@@ -129,9 +141,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/performance",
-              "parts": [
-                "api",
-                "performance"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "performance"
+                }
               ],
               "select": {
                 "exist": [
@@ -141,7 +157,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "performance"
+              ]
             }
           ]
         }
@@ -158,6 +178,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "short": "Timestamp of the capture",
           "type": "`$STRING`"
@@ -190,9 +211,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/screenshot",
-              "parts": [
-                "api",
-                "screenshot"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "screenshot"
+                }
               ],
               "select": {
                 "exist": [
@@ -202,7 +227,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "screenshot"
+              ]
             }
           ]
         }
@@ -251,9 +280,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/seo",
-              "parts": [
-                "api",
-                "seo"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "seo"
+                }
               ],
               "select": {
                 "exist": [
@@ -263,7 +296,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.brokenLinks`"
-              }
+              },
+              "parts": [
+                "api",
+                "seo"
+              ]
             }
           ]
         }
@@ -294,6 +331,7 @@ class Config {
           "type": "`$NUMBER`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "short": "Timestamp of the audit",
           "type": "`$STRING`"
@@ -331,9 +369,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/seo-audit",
-              "parts": [
-                "api",
-                "seo-audit"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "seo-audit"
+                }
               ],
               "select": {
                 "exist": [
@@ -343,7 +385,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "seo-audit"
+              ]
             }
           ]
         }
@@ -365,6 +411,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "timestamp",
           "short": "Timestamp of the check",
           "type": "`$STRING`"
@@ -380,11 +427,13 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "date-time",
           "name": "validFrom",
           "short": "Certificate valid from date",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "validTo",
           "short": "Certificate expiry date",
           "type": "`$STRING`"
@@ -412,9 +461,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ssl",
-              "parts": [
-                "api",
-                "ssl"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ssl"
+                }
               ],
               "select": {
                 "exist": [
@@ -424,7 +477,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ssl"
+              ]
             }
           ]
         }
@@ -473,9 +530,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/techstack",
-              "parts": [
-                "api",
-                "techstack"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "techstack"
+                }
               ],
               "select": {
                 "exist": [
@@ -485,7 +546,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.technologies`"
-              }
+              },
+              "parts": [
+                "api",
+                "techstack"
+              ]
             }
           ]
         }
@@ -501,6 +566,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

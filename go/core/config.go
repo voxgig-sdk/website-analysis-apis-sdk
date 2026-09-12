@@ -56,6 +56,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"short": "Timestamp of the analysis",
 						"type": "`$STRING`",
@@ -88,9 +89,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/performance",
-								"parts": []any{
-									"api",
-									"performance",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "performance",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -100,6 +105,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"performance",
 								},
 							},
 						},
@@ -117,6 +126,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"short": "Timestamp of the capture",
 						"type": "`$STRING`",
@@ -149,9 +159,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/screenshot",
-								"parts": []any{
-									"api",
-									"screenshot",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "screenshot",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -161,6 +175,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"screenshot",
 								},
 							},
 						},
@@ -210,9 +228,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/seo",
-								"parts": []any{
-									"api",
-									"seo",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "seo",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -222,6 +244,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.brokenLinks`",
+								},
+								"parts": []any{
+									"api",
+									"seo",
 								},
 							},
 						},
@@ -253,6 +279,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"short": "Timestamp of the audit",
 						"type": "`$STRING`",
@@ -290,9 +317,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/seo-audit",
-								"parts": []any{
-									"api",
-									"seo-audit",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "seo-audit",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -302,6 +333,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"seo-audit",
 								},
 							},
 						},
@@ -324,6 +359,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"short": "Timestamp of the check",
 						"type": "`$STRING`",
@@ -339,11 +375,13 @@ func MakeConfig() map[string]any {
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "validFrom",
 						"short": "Certificate valid from date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "validTo",
 						"short": "Certificate expiry date",
 						"type": "`$STRING`",
@@ -371,9 +409,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ssl",
-								"parts": []any{
-									"api",
-									"ssl",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "ssl",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -383,6 +425,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"ssl",
 								},
 							},
 						},
@@ -432,9 +478,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/techstack",
-								"parts": []any{
-									"api",
-									"techstack",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "techstack",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -444,6 +494,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.technologies`",
+								},
+								"parts": []any{
+									"api",
+									"techstack",
 								},
 							},
 						},
@@ -455,6 +509,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

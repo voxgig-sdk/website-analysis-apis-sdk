@@ -45,9 +45,13 @@ main: kit: entity: seo: {
           }
           method: "GET"
           orig: "/api/seo"
-          parts: [
-            "api"
-            "seo"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "seo"
+            }
           ]
           select: {
             exist: [

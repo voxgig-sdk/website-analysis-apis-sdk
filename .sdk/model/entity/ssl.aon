@@ -18,6 +18,7 @@ main: kit: entity: ssl: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       short: "Timestamp of the check"
@@ -36,12 +37,14 @@ main: kit: entity: ssl: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "validFrom"
       req: false
       short: "Certificate valid from date"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "validTo"
       req: false
       short: "Certificate expiry date"
@@ -69,9 +72,13 @@ main: kit: entity: ssl: {
           }
           method: "GET"
           orig: "/api/ssl"
-          parts: [
-            "api"
-            "ssl"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ssl"
+            }
           ]
           select: {
             exist: [

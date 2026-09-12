@@ -1,3 +1,4 @@
 /dist/
 /website-analysis-apis-cli
 /go-cli
+.jostraca/

@@ -29,6 +29,7 @@ main: kit: entity: seo_analysi: {
       type: "`$NUMBER`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       short: "Timestamp of the audit"
@@ -68,9 +69,13 @@ main: kit: entity: seo_analysi: {
           }
           method: "GET"
           orig: "/api/seo-audit"
-          parts: [
-            "api"
-            "seo-audit"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "seo-audit"
+            }
           ]
           select: {
             exist: [
