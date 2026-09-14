@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WebsiteAnalysisApisSDK } from '@voxgig-sdk/website-analysis-apis'
+import { WebsiteAnalysisApisSDK } from '@voxgig-sdk/website-analysis-apis-sdk'
 
 const client = new WebsiteAnalysisApisSDK()
 ```
@@ -618,7 +618,7 @@ website-analysis-apis/
 Import the SDK from the package root:
 
 ```ts
-import { WebsiteAnalysisApisSDK } from '@voxgig-sdk/website-analysis-apis'
+import { WebsiteAnalysisApisSDK } from '@voxgig-sdk/website-analysis-apis-sdk'
 ```
 
 ### Entity state
