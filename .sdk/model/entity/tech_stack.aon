@@ -43,6 +43,12 @@ main: kit: entity: tech_stack: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/techstack"
+            json: "{\"operationId\":\"detectTechStack\",\"parameters\":[{\"description\":\"The URL of the website to analyze\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"technologies\":{\"description\":\"List of detected technologies\",\"items\":{\"properties\":{\"category\":{\"description\":\"Technology category\",\"type\":\"string\"},\"name\":{\"description\":\"Technology name\",\"type\":\"string\"},\"version\":{\"description\":\"Detected version\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with detected technologies\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/techstack"
           segments: [

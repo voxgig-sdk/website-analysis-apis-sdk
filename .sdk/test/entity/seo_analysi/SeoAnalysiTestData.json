@@ -45,5 +45,96 @@
         "url": "s11e"
       }
     }
+  },
+  "requests": {
+    "GET /api/seo-audit": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "seoAudit",
+        "parameters": [
+          {
+            "description": "The URL of the website to audit",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "headings": {
+                      "description": "Heading tags analysis",
+                      "properties": {
+                        "h1": {
+                          "description": "Number of H1 tags",
+                          "type": "integer"
+                        },
+                        "h2": {
+                          "description": "Number of H2 tags",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "images": {
+                      "properties": {
+                        "missingAlt": {
+                          "description": "Images missing alt text",
+                          "type": "integer"
+                        },
+                        "total": {
+                          "description": "Total number of images",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "metaDescription": {
+                      "description": "Meta description",
+                      "type": "string"
+                    },
+                    "score": {
+                      "description": "Overall SEO score",
+                      "type": "number"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the audit",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "title": {
+                      "description": "Page title",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The audited URL",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with SEO audit results"
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

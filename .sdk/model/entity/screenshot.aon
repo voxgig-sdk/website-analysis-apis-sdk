@@ -44,6 +44,12 @@ main: kit: entity: screenshot: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/screenshot"
+            json: "{\"operationId\":\"captureScreenshot\",\"parameters\":[{\"description\":\"The URL of the website to capture\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"screenshotUrl\":{\"description\":\"URL to the captured screenshot\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp of the capture\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The captured URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with screenshot data\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/screenshot"
           segments: [

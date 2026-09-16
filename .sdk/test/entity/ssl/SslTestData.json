@@ -2,7 +2,7 @@
   "existing": {
     "ssl": {
       "SSL00": {
-        "daysRemaining": "s46",
+        "daysRemaining": 70,
         "issuer": "s47",
         "timestamp": "s48",
         "url": "s49",
@@ -12,7 +12,7 @@
         "id": "SSL00"
       },
       "SSL01": {
-        "daysRemaining": "s8c",
+        "daysRemaining": 140,
         "issuer": "s8d",
         "timestamp": "s8e",
         "url": "s8f",
@@ -22,7 +22,7 @@
         "id": "SSL01"
       },
       "SSL02": {
-        "daysRemaining": "sd2",
+        "daysRemaining": 210,
         "issuer": "sd3",
         "timestamp": "sd4",
         "url": "sd5",
@@ -36,13 +36,87 @@
   "new": {
     "ssl": {
       "ssl_ref01": {
-        "daysRemaining": "s118",
+        "daysRemaining": 280,
         "issuer": "s119",
         "timestamp": "s11a",
         "url": "s11b",
         "valid": true,
         "validFrom": "s11d",
         "validTo": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/ssl": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifySSL",
+        "parameters": [
+          {
+            "description": "The URL of the website to check SSL certificate",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "daysRemaining": {
+                      "description": "Days remaining until expiry",
+                      "type": "integer"
+                    },
+                    "issuer": {
+                      "description": "Certificate issuer",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the check",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The analyzed URL",
+                      "type": "string"
+                    },
+                    "valid": {
+                      "description": "Whether the SSL certificate is valid",
+                      "type": "boolean"
+                    },
+                    "validFrom": {
+                      "description": "Certificate valid from date",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "validTo": {
+                      "description": "Certificate expiry date",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with SSL certificate information"
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

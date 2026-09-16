@@ -1,12 +1,18 @@
 # WebsiteAnalysisApis SDK feature factory
 
 from websiteanalysisapis_sdk.feature.base_feature import WebsiteAnalysisApisBaseFeature
+from websiteanalysisapis_sdk.feature.ratelimit_feature import WebsiteAnalysisApisRatelimitFeature
+from websiteanalysisapis_sdk.feature.retry_feature import WebsiteAnalysisApisRetryFeature
 from websiteanalysisapis_sdk.feature.test_feature import WebsiteAnalysisApisTestFeature
+from websiteanalysisapis_sdk.feature.timeout_feature import WebsiteAnalysisApisTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WebsiteAnalysisApisBaseFeature(),
+    "ratelimit": lambda: WebsiteAnalysisApisRatelimitFeature(),
+    "retry": lambda: WebsiteAnalysisApisRetryFeature(),
     "test": lambda: WebsiteAnalysisApisTestFeature(),
+    "timeout": lambda: WebsiteAnalysisApisTimeoutFeature(),
 }
 
 

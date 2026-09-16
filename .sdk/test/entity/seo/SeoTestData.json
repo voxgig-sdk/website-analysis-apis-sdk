@@ -4,17 +4,17 @@
       "SEO00": {
         "foundOn": "s1e",
         "link": "s1f",
-        "statusCode": "s20"
+        "statusCode": 32
       },
       "SEO01": {
         "foundOn": "s3c",
         "link": "s3d",
-        "statusCode": "s3e"
+        "statusCode": 62
       },
       "SEO02": {
         "foundOn": "s5a",
         "link": "s5b",
-        "statusCode": "s5c"
+        "statusCode": 92
       }
     }
   },
@@ -23,7 +23,114 @@
       "seo_ref01": {
         "foundOn": "s78",
         "link": "s79",
-        "statusCode": "s7a"
+        "statusCode": 122
+      }
+    }
+  },
+  "requests": {
+    "GET /api/seo": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "checkBrokenLinks",
+        "parameters": [
+          {
+            "description": "The URL of the website to check for broken links",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "brokenCount": {
+                      "description": "Number of broken links found",
+                      "type": "integer"
+                    },
+                    "brokenLinks": {
+                      "description": "List of broken links found on the website",
+                      "items": {
+                        "properties": {
+                          "foundOn": {
+                            "description": "Page where the broken link was found",
+                            "type": "string"
+                          },
+                          "link": {
+                            "description": "The broken link URL",
+                            "type": "string"
+                          },
+                          "statusCode": {
+                            "description": "HTTP status code returned",
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the analysis",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "totalLinks": {
+                      "description": "Total number of links checked",
+                      "type": "integer"
+                    },
+                    "url": {
+                      "description": "The analyzed URL",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with broken links analysis"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

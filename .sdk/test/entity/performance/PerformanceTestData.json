@@ -3,24 +3,24 @@
     "performance": {
       "PERFORMANCE00": {
         "loadTime": 50,
-        "pageSize": "s33",
-        "requests": "s34",
+        "pageSize": 51,
+        "requests": 52,
         "timestamp": "s35",
         "url": "s36",
         "id": "PERFORMANCE00"
       },
       "PERFORMANCE01": {
         "loadTime": 100,
-        "pageSize": "s65",
-        "requests": "s66",
+        "pageSize": 101,
+        "requests": 102,
         "timestamp": "s67",
         "url": "s68",
         "id": "PERFORMANCE01"
       },
       "PERFORMANCE02": {
         "loadTime": 150,
-        "pageSize": "s97",
-        "requests": "s98",
+        "pageSize": 151,
+        "requests": 152,
         "timestamp": "s99",
         "url": "s9a",
         "id": "PERFORMANCE02"
@@ -31,10 +31,74 @@
     "performance": {
       "performance_ref01": {
         "loadTime": 200,
-        "pageSize": "sc9",
-        "requests": "sca",
+        "pageSize": 201,
+        "requests": 202,
         "timestamp": "scb",
         "url": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/performance": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "measurePerformance",
+        "parameters": [
+          {
+            "description": "The URL of the website to analyze",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "loadTime": {
+                      "description": "Page load time in milliseconds",
+                      "type": "number"
+                    },
+                    "pageSize": {
+                      "description": "Total page size in bytes",
+                      "type": "integer"
+                    },
+                    "requests": {
+                      "description": "Number of HTTP requests",
+                      "type": "integer"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp of the analysis",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The analyzed URL",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with performance metrics"
+          },
+          "400": {
+            "description": "Bad request - Invalid URL parameter"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

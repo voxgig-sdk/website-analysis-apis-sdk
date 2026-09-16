@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { WebsiteAnalysisApisSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('SslEntity', async () => {
 
     const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'ssl.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'ssl.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set WEBSITE_ANALYSIS_APIS_TEST_SSL_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"daysRemaining","req":false,"short":"Days remaining until expiry","type":"`$INTEGER`","index$":0},{"active":true,"name":"issuer","req":false,"short":"Certificate issuer","type":"`$STRING`","index$":1},{"active":true,"format":"date-time","name":"timestamp","req":false,"short":"Timestamp of the check","type":"`$STRING`","index$":2},{"active":true,"name":"url","req":false,"short":"The analyzed URL","type":"`$STRING`","index$":3},{"active":true,"name":"valid","req":false,"short":"Whether the SSL certificate is valid","type":"`$BOOLEAN`","index$":4},{"active":true,"format":"date-time","name":"validFrom","req":false,"short":"Certificate valid from date","type":"`$STRING`","index$":5},{"active":true,"format":"date-time","name":"validTo","req":false,"short":"Certificate expiry date","type":"`$STRING`","index$":6}],"name":"ssl","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"example":"https://example.com","kind":"query","name":"url","orig":"url","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /api/ssl","json":"{\"operationId\":\"verifySSL\",\"parameters\":[{\"description\":\"The URL of the website to check SSL certificate\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"daysRemaining\":{\"description\":\"Days remaining until expiry\",\"type\":\"integer\"},\"issuer\":{\"description\":\"Certificate issuer\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp of the check\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"},\"valid\":{\"description\":\"Whether the SSL certificate is valid\",\"type\":\"boolean\"},\"validFrom\":{\"description\":\"Certificate valid from date\",\"format\":\"date-time\",\"type\":\"string\"},\"validTo\":{\"description\":\"Certificate expiry date\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with SSL certificate information\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/ssl","segments":[{"lit":"api"},{"lit":"ssl"}],"select":{"exist":["url"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"ssl","name__orig":"ssl","Name":"Ssl","name_":"ssl","name-":"ssl","NAME":"SSL","index$":4}, {"active":true,"entity":"ssl","key$":"BasicSslFlow","kind":"basic","name":"BasicSslFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"ssl_ref01","srcdatavar":"ssl_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-ssl_ref01"}}],"index$":0}]}, 'Ssl')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['WEBSITE_ANALYSIS_APIS_TEST_SSL_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'WEBSITE_ANALYSIS_APIS_TEST_SSL_ENTID': idmap,
     'WEBSITE_ANALYSIS_APIS_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.WEBSITE_ANALYSIS_APIS_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['WEBSITE_ANALYSIS_APIS_TEST_SSL_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new WebsiteAnalysisApisSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.WEBSITE_ANALYSIS_APIS_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
