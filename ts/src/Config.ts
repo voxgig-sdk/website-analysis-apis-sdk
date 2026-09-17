@@ -127,24 +127,24 @@ class Config {
 
     entity: {
       
-      performance: {
-      },
-
-      screenshot: {
-      },
-
-      seo: {
-      },
-
-      seo_analysi: {
-      },
-
-      ssl: {
-      },
-
-      tech_stack: {
-      },
-
+        performance: {
+        },
+  
+        screenshot: {
+        },
+  
+        seo: {
+        },
+  
+        seo_analysi: {
+        },
+  
+        ssl: {
+        },
+  
+        tech_stack: {
+        },
+  
     }
   }
 

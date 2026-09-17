@@ -105,12 +105,12 @@ local result, err = client:Screenshot():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/website-analysis-apis-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/releases) |
-| Python | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/releases) |
-| PHP | `voxgig-sdk/website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/releases) |
+| TypeScript | `@voxgig-sdk/website-analysis-apis-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/tags) |
+| Python | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/tags) |
+| PHP | `voxgig-sdk/website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/website-analysis-apis-sdk/go` | `go get github.com/voxgig-sdk/website-analysis-apis-sdk/go@latest` |
-| Ruby | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/releases) |
-| Lua | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/releases) |
+| Ruby | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/tags) |
+| Lua | `voxgig-sdk-website-analysis-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/website-analysis-apis-sdk/go-cli` | `go install github.com/voxgig-sdk/website-analysis-apis-sdk/go-cli/cmd/website-analysis-apis@latest` |
 | Go MCP server | `github.com/voxgig-sdk/website-analysis-apis-sdk/go-mcp` | `go get github.com/voxgig-sdk/website-analysis-apis-sdk/go-mcp@latest` |
 
