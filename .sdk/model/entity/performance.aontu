@@ -1,0 +1,95 @@
+# Entity: performance
+
+main: kit: entity: performance: {
+
+  alias: field: {}
+
+  fields: {
+    loadTime: {
+      h: "Load Time"
+      n: "loadTime"
+      r: false
+      sh: "Page load time in milliseconds"
+      t: "`$NUMBER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: false
+      sh: "Total page size in bytes"
+      t: "`$INTEGER`"
+    }
+    requests: {
+      h: "Requests"
+      n: "requests"
+      r: false
+      sh: "Number of HTTP requests"
+      t: "`$INTEGER`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Timestamp of the analysis"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The analyzed URL"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "performance"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/performance"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/performance"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "performance"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

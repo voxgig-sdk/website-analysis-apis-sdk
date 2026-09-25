@@ -24,50 +24,121 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "performance": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "loadTime",
-              "req": false,
-              "short": "Page load time in milliseconds",
-              "type": "`$NUMBER`"
+          "fields": {
+            "loadTime": {
+              "a": true,
+              "h": "Load Time",
+              "n": "loadTime",
+              "r": false,
+              "sh": "Page load time in milliseconds",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "pageSize",
-              "req": false,
-              "short": "Total page size in bytes",
-              "type": "`$INTEGER`"
+            "pageSize": {
+              "a": true,
+              "h": "Page Size",
+              "n": "pageSize",
+              "r": false,
+              "sh": "Total page size in bytes",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "requests",
-              "req": false,
-              "short": "Number of HTTP requests",
-              "type": "`$INTEGER`"
+            "requests": {
+              "a": true,
+              "h": "Requests",
+              "n": "requests",
+              "r": false,
+              "sh": "Number of HTTP requests",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "Timestamp of the analysis",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "Timestamp of the analysis",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The analyzed URL",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The analyzed URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "performance",
           "op": {
             "load": {
@@ -75,30 +146,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/performance",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/performance",
-                    "json": "{\"operationId\":\"measurePerformance\",\"parameters\":[{\"description\":\"The URL of the website to analyze\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"loadTime\":{\"description\":\"Page load time in milliseconds\",\"type\":\"number\"},\"pageSize\":{\"description\":\"Total page size in bytes\",\"type\":\"integer\"},\"requests\":{\"description\":\"Number of HTTP requests\",\"type\":\"integer\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with performance metrics\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/performance",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/performance",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -106,12 +182,7 @@
                       "lit": "performance"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -128,30 +199,33 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "screenshotUrl",
-              "req": false,
-              "short": "URL to the captured screenshot",
-              "type": "`$STRING`"
+          "fields": {
+            "screenshotUrl": {
+              "a": true,
+              "h": "Screenshot Url",
+              "n": "screenshotUrl",
+              "r": false,
+              "sh": "URL to the captured screenshot",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "Timestamp of the capture",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "Timestamp of the capture",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The captured URL",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The captured URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "screenshot",
           "op": {
             "load": {
@@ -159,30 +233,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/screenshot",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/screenshot",
-                    "json": "{\"operationId\":\"captureScreenshot\",\"parameters\":[{\"description\":\"The URL of the website to capture\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"screenshotUrl\":{\"description\":\"URL to the captured screenshot\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp of the capture\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The captured URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with screenshot data\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/screenshot",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/screenshot",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -190,12 +269,7 @@
                       "lit": "screenshot"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -212,29 +286,32 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "foundOn",
-              "req": false,
-              "short": "Page where the broken link was found",
-              "type": "`$STRING`"
+          "fields": {
+            "foundOn": {
+              "a": true,
+              "h": "Found On",
+              "n": "foundOn",
+              "r": false,
+              "sh": "Page where the broken link was found",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "link",
-              "req": false,
-              "short": "The broken link URL",
-              "type": "`$STRING`"
+            "link": {
+              "a": true,
+              "h": "Link",
+              "n": "link",
+              "r": false,
+              "sh": "The broken link URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "statusCode",
-              "req": false,
-              "short": "HTTP status code returned",
-              "type": "`$INTEGER`"
+            "statusCode": {
+              "a": true,
+              "h": "Status Code",
+              "n": "statusCode",
+              "r": false,
+              "sh": "HTTP status code returned",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "seo",
           "op": {
             "list": {
@@ -242,30 +319,35 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/seo",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/seo",
-                    "json": "{\"operationId\":\"checkBrokenLinks\",\"parameters\":[{\"description\":\"The URL of the website to check for broken links\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"brokenCount\":{\"description\":\"Number of broken links found\",\"type\":\"integer\"},\"brokenLinks\":{\"description\":\"List of broken links found on the website\",\"items\":{\"properties\":{\"foundOn\":{\"description\":\"Page where the broken link was found\",\"type\":\"string\"},\"link\":{\"description\":\"The broken link URL\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code returned\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"totalLinks\":{\"description\":\"Total number of links checked\",\"type\":\"integer\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with broken links analysis\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/seo",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/seo",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -273,12 +355,7 @@
                       "lit": "seo"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.brokenLinks`"
                   }
@@ -295,57 +372,64 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "headings",
-              "req": false,
-              "short": "Heading tags analysis",
-              "type": "`$OBJECT`"
+          "fields": {
+            "headings": {
+              "a": true,
+              "h": "Headings",
+              "n": "headings",
+              "r": false,
+              "sh": "Heading tags analysis",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "images",
-              "req": false,
-              "type": "`$OBJECT`"
+            "images": {
+              "a": true,
+              "h": "Images",
+              "n": "images",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "metaDescription",
-              "req": false,
-              "short": "Meta description",
-              "type": "`$STRING`"
+            "metaDescription": {
+              "a": true,
+              "h": "Meta Description",
+              "n": "metaDescription",
+              "r": false,
+              "sh": "Meta description",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "short": "Overall SEO score",
-              "type": "`$NUMBER`"
+            "score": {
+              "a": true,
+              "h": "Score",
+              "n": "score",
+              "r": false,
+              "sh": "Overall SEO score",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "Timestamp of the audit",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "Timestamp of the audit",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Page title",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Page title",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The audited URL",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The audited URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "seo_analysi",
           "op": {
             "load": {
@@ -353,30 +437,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/seo-audit",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/seo-audit",
-                    "json": "{\"operationId\":\"seoAudit\",\"parameters\":[{\"description\":\"The URL of the website to audit\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"headings\":{\"description\":\"Heading tags analysis\",\"properties\":{\"h1\":{\"description\":\"Number of H1 tags\",\"type\":\"integer\"},\"h2\":{\"description\":\"Number of H2 tags\",\"type\":\"integer\"}},\"type\":\"object\"},\"images\":{\"properties\":{\"missingAlt\":{\"description\":\"Images missing alt text\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of images\",\"type\":\"integer\"}},\"type\":\"object\"},\"metaDescription\":{\"description\":\"Meta description\",\"type\":\"string\"},\"score\":{\"description\":\"Overall SEO score\",\"type\":\"number\"},\"timestamp\":{\"description\":\"Timestamp of the audit\",\"format\":\"date-time\",\"type\":\"string\"},\"title\":{\"description\":\"Page title\",\"type\":\"string\"},\"url\":{\"description\":\"The audited URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with SEO audit results\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/seo-audit",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/seo-audit",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -384,12 +473,7 @@
                       "lit": "seo-audit"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -406,60 +490,67 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "daysRemaining",
-              "req": false,
-              "short": "Days remaining until expiry",
-              "type": "`$INTEGER`"
+          "fields": {
+            "daysRemaining": {
+              "a": true,
+              "h": "Days Remaining",
+              "n": "daysRemaining",
+              "r": false,
+              "sh": "Days remaining until expiry",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "issuer",
-              "req": false,
-              "short": "Certificate issuer",
-              "type": "`$STRING`"
+            "issuer": {
+              "a": true,
+              "h": "Issuer",
+              "n": "issuer",
+              "r": false,
+              "sh": "Certificate issuer",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "Timestamp of the check",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "Timestamp of the check",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The analyzed URL",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The analyzed URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "valid",
-              "req": false,
-              "short": "Whether the SSL certificate is valid",
-              "type": "`$BOOLEAN`"
+            "valid": {
+              "a": true,
+              "h": "Valid",
+              "n": "valid",
+              "r": false,
+              "sh": "Whether the SSL certificate is valid",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "validFrom",
-              "req": false,
-              "short": "Certificate valid from date",
-              "type": "`$STRING`"
+            "validFrom": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Valid From",
+              "n": "validFrom",
+              "r": false,
+              "sh": "Certificate valid from date",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "validTo",
-              "req": false,
-              "short": "Certificate expiry date",
-              "type": "`$STRING`"
+            "validTo": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Valid To",
+              "n": "validTo",
+              "r": false,
+              "sh": "Certificate expiry date",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "ssl",
           "op": {
             "load": {
@@ -467,30 +558,35 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/ssl",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/ssl",
-                    "json": "{\"operationId\":\"verifySSL\",\"parameters\":[{\"description\":\"The URL of the website to check SSL certificate\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"daysRemaining\":{\"description\":\"Days remaining until expiry\",\"type\":\"integer\"},\"issuer\":{\"description\":\"Certificate issuer\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp of the check\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"},\"valid\":{\"description\":\"Whether the SSL certificate is valid\",\"type\":\"boolean\"},\"validFrom\":{\"description\":\"Certificate valid from date\",\"format\":\"date-time\",\"type\":\"string\"},\"validTo\":{\"description\":\"Certificate expiry date\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with SSL certificate information\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ssl",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ssl",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -498,12 +594,7 @@
                       "lit": "ssl"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -520,29 +611,32 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Technology category",
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "sh": "Technology category",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Technology name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Technology name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "version",
-              "req": false,
-              "short": "Detected version",
-              "type": "`$STRING`"
+            "version": {
+              "a": true,
+              "h": "Version",
+              "n": "version",
+              "r": false,
+              "sh": "Detected version",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "tech_stack",
           "op": {
             "list": {
@@ -550,30 +644,35 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/techstack",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/techstack",
-                    "json": "{\"operationId\":\"detectTechStack\",\"parameters\":[{\"description\":\"The URL of the website to analyze\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"technologies\":{\"description\":\"List of detected technologies\",\"items\":{\"properties\":{\"category\":{\"description\":\"Technology category\",\"type\":\"string\"},\"name\":{\"description\":\"Technology name\",\"type\":\"string\"},\"version\":{\"description\":\"Detected version\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the analysis\",\"format\":\"date-time\",\"type\":\"string\"},\"url\":{\"description\":\"The analyzed URL\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with detected technologies\"},\"400\":{\"description\":\"Bad request - Invalid URL parameter\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/techstack",
+                  "q": {
+                    "exist": [
+                      "url"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/techstack",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -581,12 +680,7 @@
                       "lit": "techstack"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "url"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.technologies`"
                   }
@@ -1015,17 +1109,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "performance_ref01",
                 "srcdatavar": "performance_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1045,17 +1139,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "screenshot_ref01",
                 "srcdatavar": "screenshot_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1075,17 +1169,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "seo_analysi_ref01",
                 "srcdatavar": "seo_analysi_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1105,13 +1199,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1131,17 +1225,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ssl_ref01",
                 "srcdatavar": "ssl_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1161,13 +1255,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -154,29 +147,34 @@ class Config {
       "fields": [
         {
           "name": "loadTime",
-          "short": "Page load time in milliseconds",
-          "type": "`$NUMBER`"
+          "title": "Load Time",
+          "type": "`$NUMBER`",
+          "short": "Page load time in milliseconds"
         },
         {
           "name": "pageSize",
-          "short": "Total page size in bytes",
-          "type": "`$INTEGER`"
+          "title": "Page Size",
+          "type": "`$INTEGER`",
+          "short": "Total page size in bytes"
         },
         {
           "name": "requests",
-          "short": "Number of HTTP requests",
-          "type": "`$INTEGER`"
+          "title": "Requests",
+          "type": "`$INTEGER`",
+          "short": "Number of HTTP requests"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
+          "title": "Timestamp",
+          "type": "`$STRING`",
           "short": "Timestamp of the analysis",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "url",
-          "short": "The analyzed URL",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "short": "The analyzed URL"
         }
       ],
       "name": "performance",
@@ -186,18 +184,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/performance",
@@ -209,19 +195,32 @@ class Config {
                   "lit": "performance"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "performance"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "api",
-                "performance"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }
@@ -234,19 +233,22 @@ class Config {
       "fields": [
         {
           "name": "screenshotUrl",
-          "short": "URL to the captured screenshot",
-          "type": "`$STRING`"
+          "title": "Screenshot Url",
+          "type": "`$STRING`",
+          "short": "URL to the captured screenshot"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
+          "title": "Timestamp",
+          "type": "`$STRING`",
           "short": "Timestamp of the capture",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "url",
-          "short": "The captured URL",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "short": "The captured URL"
         }
       ],
       "name": "screenshot",
@@ -256,18 +258,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/screenshot",
@@ -279,19 +269,32 @@ class Config {
                   "lit": "screenshot"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "screenshot"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "api",
-                "screenshot"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }
@@ -304,18 +307,21 @@ class Config {
       "fields": [
         {
           "name": "foundOn",
-          "short": "Page where the broken link was found",
-          "type": "`$STRING`"
+          "title": "Found On",
+          "type": "`$STRING`",
+          "short": "Page where the broken link was found"
         },
         {
           "name": "link",
-          "short": "The broken link URL",
-          "type": "`$STRING`"
+          "title": "Link",
+          "type": "`$STRING`",
+          "short": "The broken link URL"
         },
         {
           "name": "statusCode",
-          "short": "HTTP status code returned",
-          "type": "`$INTEGER`"
+          "title": "Status Code",
+          "type": "`$INTEGER`",
+          "short": "HTTP status code returned"
         }
       ],
       "name": "seo",
@@ -325,18 +331,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/seo",
@@ -348,19 +342,32 @@ class Config {
                   "lit": "seo"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "seo"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.brokenLinks`"
               },
-              "parts": [
-                "api",
-                "seo"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }
@@ -373,38 +380,45 @@ class Config {
       "fields": [
         {
           "name": "headings",
-          "short": "Heading tags analysis",
-          "type": "`$OBJECT`"
+          "title": "Headings",
+          "type": "`$OBJECT`",
+          "short": "Heading tags analysis"
         },
         {
           "name": "images",
+          "title": "Images",
           "type": "`$OBJECT`"
         },
         {
           "name": "metaDescription",
-          "short": "Meta description",
-          "type": "`$STRING`"
+          "title": "Meta Description",
+          "type": "`$STRING`",
+          "short": "Meta description"
         },
         {
           "name": "score",
-          "short": "Overall SEO score",
-          "type": "`$NUMBER`"
+          "title": "Score",
+          "type": "`$NUMBER`",
+          "short": "Overall SEO score"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
+          "title": "Timestamp",
+          "type": "`$STRING`",
           "short": "Timestamp of the audit",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "title",
-          "short": "Page title",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Page title"
         },
         {
           "name": "url",
-          "short": "The audited URL",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "short": "The audited URL"
         }
       ],
       "name": "seo_analysi",
@@ -414,18 +428,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/seo-audit",
@@ -437,19 +439,32 @@ class Config {
                   "lit": "seo-audit"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "seo-audit"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "api",
-                "seo-audit"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }
@@ -462,41 +477,48 @@ class Config {
       "fields": [
         {
           "name": "daysRemaining",
-          "short": "Days remaining until expiry",
-          "type": "`$INTEGER`"
+          "title": "Days Remaining",
+          "type": "`$INTEGER`",
+          "short": "Days remaining until expiry"
         },
         {
           "name": "issuer",
-          "short": "Certificate issuer",
-          "type": "`$STRING`"
+          "title": "Issuer",
+          "type": "`$STRING`",
+          "short": "Certificate issuer"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
+          "title": "Timestamp",
+          "type": "`$STRING`",
           "short": "Timestamp of the check",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "url",
-          "short": "The analyzed URL",
-          "type": "`$STRING`"
+          "title": "Url",
+          "type": "`$STRING`",
+          "short": "The analyzed URL"
         },
         {
           "name": "valid",
-          "short": "Whether the SSL certificate is valid",
-          "type": "`$BOOLEAN`"
+          "title": "Valid",
+          "type": "`$BOOLEAN`",
+          "short": "Whether the SSL certificate is valid"
         },
         {
-          "format": "date-time",
           "name": "validFrom",
+          "title": "Valid From",
+          "type": "`$STRING`",
           "short": "Certificate valid from date",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
-          "format": "date-time",
           "name": "validTo",
+          "title": "Valid To",
+          "type": "`$STRING`",
           "short": "Certificate expiry date",
-          "type": "`$STRING`"
+          "format": "date-time"
         }
       ],
       "name": "ssl",
@@ -506,18 +528,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/ssl",
@@ -529,19 +539,32 @@ class Config {
                   "lit": "ssl"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "ssl"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "api",
-                "ssl"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }
@@ -554,18 +577,21 @@ class Config {
       "fields": [
         {
           "name": "category",
-          "short": "Technology category",
-          "type": "`$STRING`"
+          "title": "Category",
+          "type": "`$STRING`",
+          "short": "Technology category"
         },
         {
           "name": "name",
-          "short": "Technology name",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Technology name"
         },
         {
           "name": "version",
-          "short": "Detected version",
-          "type": "`$STRING`"
+          "title": "Version",
+          "type": "`$STRING`",
+          "short": "Detected version"
         }
       ],
       "name": "tech_stack",
@@ -575,18 +601,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "https://example.com",
-                    "kind": "query",
-                    "name": "url",
-                    "orig": "url",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/techstack",
@@ -598,19 +612,32 @@ class Config {
                   "lit": "techstack"
                 }
               ],
-              "select": {
-                "exist": [
-                  "url"
-                ]
-              },
+              "parts": [
+                "api",
+                "techstack"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.technologies`"
               },
-              "parts": [
-                "api",
-                "techstack"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "url",
+                    "orig": "url",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "https://example.com"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "url"
+                ]
+              }
             }
           ]
         }

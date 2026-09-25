@@ -1,0 +1,108 @@
+# Entity: seo_analysi
+
+main: kit: entity: seo_analysi: {
+
+  alias: field: {}
+
+  fields: {
+    headings: {
+      h: "Headings"
+      n: "headings"
+      r: false
+      sh: "Heading tags analysis"
+      t: "`$OBJECT`"
+    }
+    images: {
+      h: "Images"
+      n: "images"
+      r: false
+      t: "`$OBJECT`"
+    }
+    metaDescription: {
+      h: "Meta Description"
+      n: "metaDescription"
+      r: false
+      sh: "Meta description"
+      t: "`$STRING`"
+    }
+    score: {
+      h: "Score"
+      n: "score"
+      r: false
+      sh: "Overall SEO score"
+      t: "`$NUMBER`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Timestamp of the audit"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Page title"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The audited URL"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "seo_analysi"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/seo-audit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/seo-audit"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "seo-audit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

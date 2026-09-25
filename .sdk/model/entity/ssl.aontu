@@ -1,0 +1,111 @@
+# Entity: ssl
+
+main: kit: entity: ssl: {
+
+  alias: field: {}
+
+  fields: {
+    daysRemaining: {
+      h: "Days Remaining"
+      n: "daysRemaining"
+      r: false
+      sh: "Days remaining until expiry"
+      t: "`$INTEGER`"
+    }
+    issuer: {
+      h: "Issuer"
+      n: "issuer"
+      r: false
+      sh: "Certificate issuer"
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Timestamp of the check"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The analyzed URL"
+      t: "`$STRING`"
+    }
+    valid: {
+      h: "Valid"
+      n: "valid"
+      r: false
+      sh: "Whether the SSL certificate is valid"
+      t: "`$BOOLEAN`"
+    }
+    validFrom: {
+      fo: "date-time"
+      h: "Valid From"
+      n: "validFrom"
+      r: false
+      sh: "Certificate valid from date"
+      t: "`$STRING`"
+    }
+    validTo: {
+      fo: "date-time"
+      h: "Valid To"
+      n: "validTo"
+      r: false
+      sh: "Certificate expiry date"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "ssl"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ssl"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/ssl"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ssl"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

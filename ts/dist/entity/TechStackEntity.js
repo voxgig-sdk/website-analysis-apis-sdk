@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TechStackEntity = void 0;
 const WebsiteAnalysisApisEntityBase_1 = require("../WebsiteAnalysisApisEntityBase");
-// TODO: needs Entity superclass
 class TechStackEntity extends WebsiteAnalysisApisEntityBase_1.WebsiteAnalysisApisEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

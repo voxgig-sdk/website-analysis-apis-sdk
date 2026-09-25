@@ -1,0 +1,80 @@
+# Entity: seo
+
+main: kit: entity: seo: {
+
+  alias: field: {}
+
+  fields: {
+    foundOn: {
+      h: "Found On"
+      n: "foundOn"
+      r: false
+      sh: "Page where the broken link was found"
+      t: "`$STRING`"
+    }
+    link: {
+      h: "Link"
+      n: "link"
+      r: false
+      sh: "The broken link URL"
+      t: "`$STRING`"
+    }
+    statusCode: {
+      h: "Status Code"
+      n: "statusCode"
+      r: false
+      sh: "HTTP status code returned"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "seo"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/seo"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/seo"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "seo"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.brokenLinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

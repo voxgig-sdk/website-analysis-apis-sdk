@@ -19,7 +19,6 @@ import type {
   TechStackListMatch,
 } from '../WebsiteAnalysisApisTypes'
 
-// TODO: needs Entity superclass
 class TechStackEntity extends WebsiteAnalysisApisEntityBase<TechStack> {
 
   constructor(client: WebsiteAnalysisApisSDK, entopts: any) {

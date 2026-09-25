@@ -104,29 +104,34 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "loadTime",
-              "short" => "Page load time in milliseconds",
+              "title" => "Load Time",
               "type" => "`$NUMBER`",
+              "short" => "Page load time in milliseconds",
             },
             {
               "name" => "pageSize",
-              "short" => "Total page size in bytes",
+              "title" => "Page Size",
               "type" => "`$INTEGER`",
+              "short" => "Total page size in bytes",
             },
             {
               "name" => "requests",
-              "short" => "Number of HTTP requests",
+              "title" => "Requests",
               "type" => "`$INTEGER`",
+              "short" => "Number of HTTP requests",
             },
             {
-              "format" => "date-time",
               "name" => "timestamp",
-              "short" => "Timestamp of the analysis",
+              "title" => "Timestamp",
               "type" => "`$STRING`",
+              "short" => "Timestamp of the analysis",
+              "format" => "date-time",
             },
             {
               "name" => "url",
-              "short" => "The analyzed URL",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "The analyzed URL",
             },
           ],
           "name" => "performance",
@@ -136,18 +141,6 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/performance",
@@ -159,19 +152,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "performance",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "performance",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "performance",
-                  ],
                 },
               ],
             },
@@ -184,19 +190,22 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "screenshotUrl",
-              "short" => "URL to the captured screenshot",
+              "title" => "Screenshot Url",
               "type" => "`$STRING`",
+              "short" => "URL to the captured screenshot",
             },
             {
-              "format" => "date-time",
               "name" => "timestamp",
-              "short" => "Timestamp of the capture",
+              "title" => "Timestamp",
               "type" => "`$STRING`",
+              "short" => "Timestamp of the capture",
+              "format" => "date-time",
             },
             {
               "name" => "url",
-              "short" => "The captured URL",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "The captured URL",
             },
           ],
           "name" => "screenshot",
@@ -206,18 +215,6 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/screenshot",
@@ -229,19 +226,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "screenshot",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "screenshot",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "screenshot",
-                  ],
                 },
               ],
             },
@@ -254,18 +264,21 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "foundOn",
-              "short" => "Page where the broken link was found",
+              "title" => "Found On",
               "type" => "`$STRING`",
+              "short" => "Page where the broken link was found",
             },
             {
               "name" => "link",
-              "short" => "The broken link URL",
+              "title" => "Link",
               "type" => "`$STRING`",
+              "short" => "The broken link URL",
             },
             {
               "name" => "statusCode",
-              "short" => "HTTP status code returned",
+              "title" => "Status Code",
               "type" => "`$INTEGER`",
+              "short" => "HTTP status code returned",
             },
           ],
           "name" => "seo",
@@ -275,18 +288,6 @@ module WebsiteAnalysisApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/seo",
@@ -298,19 +299,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "seo",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "seo",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.brokenLinks`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.brokenLinks`",
-                  },
-                  "parts" => [
-                    "api",
-                    "seo",
-                  ],
                 },
               ],
             },
@@ -323,38 +337,45 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "headings",
-              "short" => "Heading tags analysis",
+              "title" => "Headings",
               "type" => "`$OBJECT`",
+              "short" => "Heading tags analysis",
             },
             {
               "name" => "images",
+              "title" => "Images",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "metaDescription",
-              "short" => "Meta description",
+              "title" => "Meta Description",
               "type" => "`$STRING`",
+              "short" => "Meta description",
             },
             {
               "name" => "score",
-              "short" => "Overall SEO score",
+              "title" => "Score",
               "type" => "`$NUMBER`",
+              "short" => "Overall SEO score",
             },
             {
-              "format" => "date-time",
               "name" => "timestamp",
-              "short" => "Timestamp of the audit",
+              "title" => "Timestamp",
               "type" => "`$STRING`",
+              "short" => "Timestamp of the audit",
+              "format" => "date-time",
             },
             {
               "name" => "title",
-              "short" => "Page title",
+              "title" => "Title",
               "type" => "`$STRING`",
+              "short" => "Page title",
             },
             {
               "name" => "url",
-              "short" => "The audited URL",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "The audited URL",
             },
           ],
           "name" => "seo_analysi",
@@ -364,18 +385,6 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/seo-audit",
@@ -387,19 +396,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "seo-audit",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "seo-audit",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "seo-audit",
-                  ],
                 },
               ],
             },
@@ -412,41 +434,48 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "daysRemaining",
-              "short" => "Days remaining until expiry",
+              "title" => "Days Remaining",
               "type" => "`$INTEGER`",
+              "short" => "Days remaining until expiry",
             },
             {
               "name" => "issuer",
-              "short" => "Certificate issuer",
+              "title" => "Issuer",
               "type" => "`$STRING`",
+              "short" => "Certificate issuer",
             },
             {
-              "format" => "date-time",
               "name" => "timestamp",
-              "short" => "Timestamp of the check",
+              "title" => "Timestamp",
               "type" => "`$STRING`",
+              "short" => "Timestamp of the check",
+              "format" => "date-time",
             },
             {
               "name" => "url",
-              "short" => "The analyzed URL",
+              "title" => "Url",
               "type" => "`$STRING`",
+              "short" => "The analyzed URL",
             },
             {
               "name" => "valid",
-              "short" => "Whether the SSL certificate is valid",
+              "title" => "Valid",
               "type" => "`$BOOLEAN`",
+              "short" => "Whether the SSL certificate is valid",
             },
             {
-              "format" => "date-time",
               "name" => "validFrom",
-              "short" => "Certificate valid from date",
+              "title" => "Valid From",
               "type" => "`$STRING`",
+              "short" => "Certificate valid from date",
+              "format" => "date-time",
             },
             {
-              "format" => "date-time",
               "name" => "validTo",
-              "short" => "Certificate expiry date",
+              "title" => "Valid To",
               "type" => "`$STRING`",
+              "short" => "Certificate expiry date",
+              "format" => "date-time",
             },
           ],
           "name" => "ssl",
@@ -456,18 +485,6 @@ module WebsiteAnalysisApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ssl",
@@ -479,19 +496,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "ssl",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "ssl",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "ssl",
-                  ],
                 },
               ],
             },
@@ -504,18 +534,21 @@ module WebsiteAnalysisApisConfig
           "fields" => [
             {
               "name" => "category",
-              "short" => "Technology category",
+              "title" => "Category",
               "type" => "`$STRING`",
+              "short" => "Technology category",
             },
             {
               "name" => "name",
-              "short" => "Technology name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Technology name",
             },
             {
               "name" => "version",
-              "short" => "Detected version",
+              "title" => "Version",
               "type" => "`$STRING`",
+              "short" => "Detected version",
             },
           ],
           "name" => "tech_stack",
@@ -525,18 +558,6 @@ module WebsiteAnalysisApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => "https://example.com",
-                        "kind" => "query",
-                        "name" => "url",
-                        "orig" => "url",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/techstack",
@@ -548,19 +569,32 @@ module WebsiteAnalysisApisConfig
                       "lit" => "techstack",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "techstack",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.technologies`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "url",
+                        "orig" => "url",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "https://example.com",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "url",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.technologies`",
-                  },
-                  "parts" => [
-                    "api",
-                    "techstack",
-                  ],
                 },
               ],
             },

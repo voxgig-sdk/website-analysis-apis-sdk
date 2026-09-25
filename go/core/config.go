@@ -96,29 +96,34 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "loadTime",
-						"short": "Page load time in milliseconds",
+						"title": "Load Time",
 						"type": "`$NUMBER`",
+						"short": "Page load time in milliseconds",
 					},
 					map[string]any{
 						"name": "pageSize",
-						"short": "Total page size in bytes",
+						"title": "Page Size",
 						"type": "`$INTEGER`",
+						"short": "Total page size in bytes",
 					},
 					map[string]any{
 						"name": "requests",
-						"short": "Number of HTTP requests",
+						"title": "Requests",
 						"type": "`$INTEGER`",
+						"short": "Number of HTTP requests",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
-						"short": "Timestamp of the analysis",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"short": "Timestamp of the analysis",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "url",
-						"short": "The analyzed URL",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "The analyzed URL",
 					},
 				},
 				"name": "performance",
@@ -128,18 +133,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/performance",
@@ -151,18 +144,31 @@ func MakeConfig() map[string]any {
 										"lit": "performance",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"performance",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"performance",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},
@@ -176,19 +182,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "screenshotUrl",
-						"short": "URL to the captured screenshot",
+						"title": "Screenshot Url",
 						"type": "`$STRING`",
+						"short": "URL to the captured screenshot",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
-						"short": "Timestamp of the capture",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"short": "Timestamp of the capture",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "url",
-						"short": "The captured URL",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "The captured URL",
 					},
 				},
 				"name": "screenshot",
@@ -198,18 +207,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/screenshot",
@@ -221,18 +218,31 @@ func MakeConfig() map[string]any {
 										"lit": "screenshot",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"screenshot",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"screenshot",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},
@@ -246,18 +256,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "foundOn",
-						"short": "Page where the broken link was found",
+						"title": "Found On",
 						"type": "`$STRING`",
+						"short": "Page where the broken link was found",
 					},
 					map[string]any{
 						"name": "link",
-						"short": "The broken link URL",
+						"title": "Link",
 						"type": "`$STRING`",
+						"short": "The broken link URL",
 					},
 					map[string]any{
 						"name": "statusCode",
-						"short": "HTTP status code returned",
+						"title": "Status Code",
 						"type": "`$INTEGER`",
+						"short": "HTTP status code returned",
 					},
 				},
 				"name": "seo",
@@ -267,18 +280,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/seo",
@@ -290,18 +291,31 @@ func MakeConfig() map[string]any {
 										"lit": "seo",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"seo",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.brokenLinks`",
 								},
-								"parts": []any{
-									"api",
-									"seo",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},
@@ -315,38 +329,45 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "headings",
-						"short": "Heading tags analysis",
+						"title": "Headings",
 						"type": "`$OBJECT`",
+						"short": "Heading tags analysis",
 					},
 					map[string]any{
 						"name": "images",
+						"title": "Images",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "metaDescription",
-						"short": "Meta description",
+						"title": "Meta Description",
 						"type": "`$STRING`",
+						"short": "Meta description",
 					},
 					map[string]any{
 						"name": "score",
-						"short": "Overall SEO score",
+						"title": "Score",
 						"type": "`$NUMBER`",
+						"short": "Overall SEO score",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
-						"short": "Timestamp of the audit",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"short": "Timestamp of the audit",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "title",
-						"short": "Page title",
+						"title": "Title",
 						"type": "`$STRING`",
+						"short": "Page title",
 					},
 					map[string]any{
 						"name": "url",
-						"short": "The audited URL",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "The audited URL",
 					},
 				},
 				"name": "seo_analysi",
@@ -356,18 +377,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/seo-audit",
@@ -379,18 +388,31 @@ func MakeConfig() map[string]any {
 										"lit": "seo-audit",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"seo-audit",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"seo-audit",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},
@@ -404,41 +426,48 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "daysRemaining",
-						"short": "Days remaining until expiry",
+						"title": "Days Remaining",
 						"type": "`$INTEGER`",
+						"short": "Days remaining until expiry",
 					},
 					map[string]any{
 						"name": "issuer",
-						"short": "Certificate issuer",
+						"title": "Issuer",
 						"type": "`$STRING`",
+						"short": "Certificate issuer",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
-						"short": "Timestamp of the check",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"short": "Timestamp of the check",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "url",
-						"short": "The analyzed URL",
+						"title": "Url",
 						"type": "`$STRING`",
+						"short": "The analyzed URL",
 					},
 					map[string]any{
 						"name": "valid",
-						"short": "Whether the SSL certificate is valid",
+						"title": "Valid",
 						"type": "`$BOOLEAN`",
+						"short": "Whether the SSL certificate is valid",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "validFrom",
-						"short": "Certificate valid from date",
+						"title": "Valid From",
 						"type": "`$STRING`",
+						"short": "Certificate valid from date",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "validTo",
-						"short": "Certificate expiry date",
+						"title": "Valid To",
 						"type": "`$STRING`",
+						"short": "Certificate expiry date",
+						"format": "date-time",
 					},
 				},
 				"name": "ssl",
@@ -448,18 +477,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ssl",
@@ -471,18 +488,31 @@ func MakeConfig() map[string]any {
 										"lit": "ssl",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"ssl",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"api",
-									"ssl",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},
@@ -496,18 +526,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "category",
-						"short": "Technology category",
+						"title": "Category",
 						"type": "`$STRING`",
+						"short": "Technology category",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Technology name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Technology name",
 					},
 					map[string]any{
 						"name": "version",
-						"short": "Detected version",
+						"title": "Version",
 						"type": "`$STRING`",
+						"short": "Detected version",
 					},
 				},
 				"name": "tech_stack",
@@ -517,18 +550,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "https://example.com",
-											"kind": "query",
-											"name": "url",
-											"orig": "url",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/techstack",
@@ -540,18 +561,31 @@ func MakeConfig() map[string]any {
 										"lit": "techstack",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"url",
-									},
+								"parts": []any{
+									"api",
+									"techstack",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.technologies`",
 								},
-								"parts": []any{
-									"api",
-									"techstack",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "url",
+											"orig": "url",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "https://example.com",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"url",
+									},
 								},
 							},
 						},

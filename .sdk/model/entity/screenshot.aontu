@@ -1,0 +1,81 @@
+# Entity: screenshot
+
+main: kit: entity: screenshot: {
+
+  alias: field: {}
+
+  fields: {
+    screenshotUrl: {
+      h: "Screenshot Url"
+      n: "screenshotUrl"
+      r: false
+      sh: "URL to the captured screenshot"
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Timestamp of the capture"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The captured URL"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "screenshot"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/screenshot"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/screenshot"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "screenshot"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
